@@ -35,6 +35,10 @@ header h1 {
      /* width: 80%; */
 }
 
+h4 {
+     font-size: .9rem;
+}
+
 .date {
      text-align: right; /*not aligning*/
 }
