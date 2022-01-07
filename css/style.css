@@ -103,10 +103,11 @@ a:hover {
 }
 
 button {
+     font-size: .75rem;
      background-color: white;
      border: 1px solid black;
      border-radius: 3px;
-     padding: 7px;
+     padding: 6px;
 }
 
 button:hover {
