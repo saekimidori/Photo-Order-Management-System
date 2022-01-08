@@ -120,11 +120,12 @@ table {
 }
 
 thead {
-     background-color: #c2c2c2;
+     color: white;
+     background-color: #21367a;
 }
 
 tr, td {
-     border: 1px solid #c2c2c2;
+     border: 1px solid #21367a;
 }
 
 th, td {
