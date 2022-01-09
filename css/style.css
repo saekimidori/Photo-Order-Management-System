@@ -128,6 +128,14 @@ tr, td {
      border: 1px solid #21367a;
 }
 
+thead tr:hover {
+     background-color: #21367a;
+}
+
+tr:hover {
+     background-color: #ccd8fa;
+}
+
 th, td {
      padding: 10px;
 }
