@@ -68,3 +68,7 @@ th, td {
 thead {
      background-color: gray;
 }
+
+span {
+     display: block;
+}
