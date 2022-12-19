@@ -57,6 +57,16 @@ footer {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+a, a:visited {
+     color: #0169ad;
+     text-decoration: none;
+}
+
+a:hover {
+     color: #4646f0;
+     text-decoration: none;
+}
+
 tr, td {
      border: 1px solid darkgray;
 }
