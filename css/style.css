@@ -52,6 +52,10 @@ header {
      justify-content: space-between;
 } */
 
+.user {
+     text-align: right;
+}
+
 footer {
 
 }
