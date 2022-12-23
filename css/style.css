@@ -25,9 +25,7 @@ body {
      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: .8em;
      color: black;
-     margin: 20px;
-     margin-left: 20rem;
-     margin-right: 20rem;
+     margin: 1rem 3rem;
 }
 
 header h1 {
@@ -97,6 +95,10 @@ a, a:visited {
 a:hover {
      color: #4646f0;
      text-decoration: none;
+}
+
+table {
+     width: 100%;
 }
 
 tr, td {
