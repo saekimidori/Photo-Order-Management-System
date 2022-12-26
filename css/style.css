@@ -24,6 +24,7 @@
 body {
      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: .8em;
+     color: black;
      margin: 20px;
      margin-left: 20rem;
      margin-right: 20rem;
@@ -87,6 +88,12 @@ thead {
 
 span {
      display: block;
+}
+
+blockquote {
+     color: #494949;
+     background-color: goldenrod;
+     padding: 10px;
 }
 
 .notes p {
