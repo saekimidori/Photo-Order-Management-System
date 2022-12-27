@@ -111,9 +111,9 @@ thead {
      background-color: gray;
 }
 
-span {
+/* span {
      display: block;
-}
+} */
 
 blockquote {
      color: #494949;
@@ -124,6 +124,10 @@ blockquote {
 .notes p {
      background-color: silver;
      padding: 5px;
+}
+
+#form textarea {
+     width: 100%;
 }
 
 .hidden {
