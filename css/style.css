@@ -30,8 +30,11 @@ body {
      margin-right: 20rem;
 }
 
-h1 {
+header h1 {
      color: navy;
+     /* display: flex; */
+     /* box-sizing: content-box; */
+     /* width: 80%; */
 }
 
 .date {
@@ -43,7 +46,9 @@ h1 {
 /* LAYOUT
 /*******************************************/
 header {
-
+     display: flex;
+     justify-content: space-between;
+     align-items: baseline;
 }
 
 /* these should be side by side */
@@ -53,8 +58,26 @@ header {
      justify-content: space-between;
 } */
 
-.user {
-     text-align: right;
+header p {
+     /* display: flex; */
+     /* box-sizing: content-box; */
+     /* float: right; */
+}
+
+header a {
+     text-transform: uppercase;
+     padding: 10px;
+}
+
+header a:first-child {
+     color: white;
+     background-color: #030366;
+     
+}
+
+header a:last-child {
+     color: white;
+     background-color: #6d0303;
 }
 
 footer {
