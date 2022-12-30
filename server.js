@@ -1,8 +1,22 @@
 const express = require('express') // imports express
 const app = express() // assigns express to app variable
+const mongoose = require('mongoose')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const connectDB = require('./config/database')
+const authRoutes = require('./routes/auth')
+const homeRoutes = require('./routes/home')
+// const todoRoutes = require('./routes/todos')
 const MongoClient = require('mongodb').MongoClient // imports MongoDB client
 const PORT = 6000 // port is assigned to 6000
-require('dotenv').config() // loads environment variables
+
+require('dotenv').config({path: './config/.env'}) // loads environment variables
+require('./config/passport')(passport)
+
+const connectDB = require('./config/database')
+
+connectDB()
 
 
 let db, // asigns db variable
@@ -21,7 +35,32 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-app.get('/',async (request, response)=>{
+// Sessions
+app.use(
+    session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+      store: new MongoStore({ mongooseConnection: 
+                             mongoose.connection }),
+    })
+  )
+  
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+const authRoutes = require('./routes/auth')
+const homeRoutes = require('./routes/home')
+const todoRoutes = require('./routes/todos')
+
+app.use('/', homeRoutes)
+app.use('/auth', authRoutes)
+app.use('/todos', todoRoutes)
+
+
+app.get('/', async (request, response) => {
     const todoItems = await db.collection('todos').find().toArray() // gets collection of documents and puts them into an array
     const itemsLeft = await db.collection('todos').countDocuments({completed: false}) // gets collection of documents that are not completed
     response.render('index.ejs', { items: todoItems, left: itemsLeft })
