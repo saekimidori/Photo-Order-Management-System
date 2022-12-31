@@ -61,6 +61,7 @@ header {
 }
 
 .date {
+     /* not aligning */
      text-align: right;
 }
 
@@ -125,7 +126,13 @@ blockquote {
 
 .notes p {
      background-color: silver;
-     padding: 5px;
+     padding: 1.5em;
+}
+
+.notes span {
+     font-size: .9em;
+     text-align: right;
+     display: block;
 }
 
 textarea {
