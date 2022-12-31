@@ -3,18 +3,14 @@ const app = express() // assigns express to app variable
 const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+// const MongoStore = require('connect-mongo')(session) // TypeError: Class constructor MongoStore cannot be invoked without 'new' at Object.<anonymous>
 const connectDB = require('./config/database')
-const authRoutes = require('./routes/auth')
-const homeRoutes = require('./routes/home')
 // const todoRoutes = require('./routes/todos')
 const MongoClient = require('mongodb').MongoClient // imports MongoDB client
 const PORT = 6000 // port is assigned to 6000
 
 require('dotenv').config({path: './config/.env'}) // loads environment variables
 require('./config/passport')(passport)
-
-const connectDB = require('./config/database')
 
 connectDB()
 
