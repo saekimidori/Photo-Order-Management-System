@@ -98,6 +98,18 @@ a:hover {
      text-decoration: none;
 }
 
+button {
+     background-color: #dfdf08;
+     border: 0;
+     border-radius: 3px;
+     padding: 7px;
+}
+
+button:hover {
+     background-color: #e4e402;
+     cursor: pointer;
+}
+
 table {
      width: 100%;
 }
