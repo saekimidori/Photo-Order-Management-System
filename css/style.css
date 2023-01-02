@@ -99,14 +99,14 @@ a:hover {
 }
 
 button {
-     background-color: #dfdf08;
-     border: 0;
+     background-color: white;
+     border: 1px solid black;
      border-radius: 3px;
      padding: 7px;
 }
 
 button:hover {
-     background-color: #e4e402;
+     background-color: #a2bff5;
      cursor: pointer;
 }
 
