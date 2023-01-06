@@ -35,6 +35,10 @@ header h1 {
      /* width: 80%; */
 }
 
+h4 {
+     font-size: .9rem;
+}
+
 .date {
      text-align: right; /*not aligning*/
 }
@@ -99,10 +103,11 @@ a:hover {
 }
 
 button {
+     font-size: .75rem;
      background-color: white;
      border: 1px solid black;
      border-radius: 3px;
-     padding: 7px;
+     padding: 6px;
 }
 
 button:hover {
@@ -115,11 +120,20 @@ table {
 }
 
 thead {
-     background-color: #c2c2c2;
+     color: white;
+     background-color: #21367a;
 }
 
 tr, td {
-     border: 1px solid #c2c2c2;
+     border: 1px solid #21367a;
+}
+
+thead tr:hover {
+     background-color: #21367a;
+}
+
+tr:hover {
+     background-color: #ccd8fa;
 }
 
 th, td {
