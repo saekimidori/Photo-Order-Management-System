@@ -111,7 +111,7 @@ button {
 }
 
 button:hover {
-     background-color: #a2bff5;
+     background-color: #d6e3fa;
      cursor: pointer;
 }
 
@@ -133,7 +133,7 @@ thead tr:hover {
 }
 
 tr:hover {
-     background-color: #ccd8fa;
+     background-color: #e5ebfa;
 }
 
 th, td {
