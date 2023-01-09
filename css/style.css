@@ -21,10 +21,15 @@
 /* BASE STYLES
 /*******************************************/
 
+:root {
+     --main-text-color: black;
+     --main-table-color: #21367a;
+}
+
 body {
      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: .8em;
-     color: black;
+     color: var(--main-text-color);
      margin: 1rem 3rem;
 }
 
@@ -69,6 +74,8 @@ header {
      text-align: right;
 }
 
+
+/*** username/logout navigation ***/
 header a {
      text-transform: uppercase;
      padding: 10px;
@@ -84,6 +91,7 @@ header a:last-child {
      color: white;
      background-color: #6d0303;
 }
+
 
 footer {
 
@@ -105,7 +113,7 @@ a:hover {
 button {
      font-size: .75rem;
      background-color: white;
-     border: 1px solid black;
+     border: 1px solid var(--main-text-color);
      border-radius: 3px;
      padding: 6px;
 }
@@ -121,15 +129,15 @@ table {
 
 thead {
      color: white;
-     background-color: #21367a;
+     background-color: var(--main-table-color);
 }
 
 tr, td {
-     border: 1px solid #21367a;
+     border: 1px solid var(--main-table-color);
 }
 
 thead tr:hover {
-     background-color: #21367a;
+     background-color: var(--main-table-color);
 }
 
 tr:hover {
