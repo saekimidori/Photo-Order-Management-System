@@ -172,6 +172,7 @@ blockquote {
 
 textarea {
      width: 100%;
+     margin-top: .3rem;
 }
 
 .hidden {
