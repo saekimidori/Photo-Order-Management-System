@@ -110,7 +110,8 @@ a:hover {
      text-decoration: none;
 }
 
-button {
+button,
+.button {
      font-size: .75rem;
      background-color: white;
      border: 1px solid var(--main-text-color);
@@ -118,7 +119,8 @@ button {
      padding: 6px;
 }
 
-button:hover {
+button:hover,
+.button:hover {
      color: white;
      background-color: var(--main-accent-color);
      cursor: pointer;
