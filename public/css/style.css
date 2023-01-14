@@ -1,0 +1,182 @@
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+:root {
+     --main-text-color: black;
+     --main-accent-color: #21367a;
+}
+
+body {
+     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-size: .8em;
+     color: var(--main-text-color);
+     margin: 1rem 3rem;
+}
+
+header h1 {
+     color: navy;
+     /* display: flex; */
+     /* box-sizing: content-box; */
+     /* width: 80%; */
+}
+
+h4 {
+     font-size: .9rem;
+}
+
+.date {
+     text-align: right; /*not aligning*/
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header {
+     
+}
+
+/* these should be side by side */
+/* section, aside {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+} */
+
+.col-2 {
+     display: flex;
+     justify-content: space-between;
+     align-items: baseline;
+}
+
+.date {
+     /* not aligning */
+     text-align: right;
+}
+
+
+/*** username/logout navigation ***/
+header a {
+     text-transform: uppercase;
+     padding: 10px;
+}
+
+header a:first-child {
+     color: white;
+     background-color: #030366;
+     
+}
+
+header a:last-child {
+     color: white;
+     background-color: #6d0303;
+}
+
+
+footer {
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+a, a:visited {
+     color: #0169ad;
+     text-decoration: none;
+}
+
+a:hover {
+     color: #0866f1;
+     text-decoration: none;
+}
+
+button,
+.button {
+     font-size: .75rem;
+     background-color: white;
+     border: 1px solid var(--main-text-color);
+     border-radius: 3px;
+     padding: 6px;
+}
+
+button:hover,
+.button:hover {
+     color: white;
+     background-color: var(--main-accent-color);
+     cursor: pointer;
+}
+
+table {
+     width: 100%;
+}
+
+thead {
+     color: white;
+     background-color: var(--main-accent-color);
+}
+
+tr, td {
+     border: 1px solid var(--main-accent-color);
+}
+
+thead tr:hover {
+     background-color: var(--main-accent-color);
+}
+
+tr:hover {
+     background-color: #e5ebfa;
+}
+
+th, td {
+     padding: 10px;
+}
+
+/* span {
+     display: block;
+} */
+
+blockquote {
+     color: #494949;
+     background-color: goldenrod;
+     padding: 10px;
+}
+
+.notes p {
+     background-color: #c2c2c2;
+     padding: 1.5em;
+}
+
+.notes span {
+     font-size: .9em;
+     margin: .5em auto auto 3em;
+     display: block;
+}
+
+textarea {
+     width: 100%;
+     margin-top: .3rem;
+}
+
+.hidden {
+     display: none;
+}

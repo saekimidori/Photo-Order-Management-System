@@ -1,8 +1,8 @@
 const express = require('express') // imports express
 const app = express() // assigns express to app variable
 const MongoClient = require('mongodb').MongoClient // imports MongoDB client
-const PORT = 6000 // port is assigned to 6000
-require('dotenv').config() // loads environment variables
+const PORT = 5000 // port is assigned to 6000
+require('dotenv').config({path: './config/.env'}) // loads environment variables
 
 
 let db, // asigns db variable
@@ -36,7 +36,8 @@ app.get('/',async (request, response)=>{
 })
 
 app.post('/addWorkspaceNote', (request, response) => { // creates a new workspace note
-    db.collection('workspaceNotes').insertOne({note: request.body.workspaceNote, resolved: false}) // adds one new note to collection and defaults to unresolved
+    db.collection('workspaceNotes').insertOne({note: request.body.workspaceNote, resolved: false}) // adds one new note to collection and defaults to unresolved 
+    // ** add logged in user as identifier to note
     .then(result => {
         console.log('Workspace Note Added') // logs 'Workspace Note Added' to console
         response.redirect('/') // refreshes page
@@ -88,6 +89,6 @@ app.delete('/deleteItem', (request, response) => { // removes an item from colle
 
 })
 
-app.listen(process.env.PORT || PORT, ()=>{ // server tries to loads on environment variable first; if not, then it will load on assigned port above
+app.listen(process.env.PORT || PORT, ()=>{ // server tries to loads on environment variable first; if not, then it will load on assigned port above (|| PORT)
     console.log(`Server running on port ${PORT}`) // logs the port that server is running on to the console
 })
