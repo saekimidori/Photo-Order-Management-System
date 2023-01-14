@@ -22,9 +22,9 @@ app.use(express.json())
 
 
 app.get('/',async (request, response)=>{
-    const todoItems = await db.collection('todos').find().toArray() // gets collection of documents and puts them into an array
+    const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
     const itemsLeft = await db.collection('todos').countDocuments({completed: false}) // gets collection of documents that are not completed
-    response.render('index.ejs', { items: todoItems, left: itemsLeft }) // originally index.ejs
+    response.render('index.ejs', { notes: workspaceNotes, left: itemsLeft }) // originally index.ejs
     // db.collection('todos').find().toArray()
     // .then(data => {
     //     db.collection('todos').countDocuments({completed: false})
@@ -35,8 +35,9 @@ app.get('/',async (request, response)=>{
     // .catch(error => console.error(error))
 })
 
-app.post('/addWorkspaceNote', (request, response) => { // creates a new workspace note
-    db.collection('workspaceNotes').insertOne({note: request.body.workspaceNote, resolved: false}) // adds one new note to collection and defaults to unresolved 
+app.post('/addWorkspaceNote', (request, response) => {
+     // creates a new workspace note
+    db.collection('workspaceNotes').insertOne({note: request.body.workspaceNote, resolved: false, date: new Date()}) // adds one new note to collection and defaults to unresolved 
     // ** add logged in user as identifier to note
     .then(result => {
         console.log('Workspace Note Added') // logs 'Workspace Note Added' to console

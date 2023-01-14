@@ -161,10 +161,26 @@ blockquote {
      padding: 10px;
 }
 
-.notes p {
+.workspaceNotes {
      background-color: #c2c2c2;
+     list-style: none;
+     padding-left: 0;
      padding: 1.5em;
 }
+
+.note {
+     margin-bottom: 1rem;
+}
+
+.note:last-of-type {
+     margin-bottom: auto;
+}
+
+/* .workspaceNotes li {
+     background-color: #c2c2c2;
+     list-style: none;
+     margin-left: 0;
+} */
 
 .notes span {
      font-size: .9em;
