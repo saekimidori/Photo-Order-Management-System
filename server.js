@@ -80,15 +80,25 @@ app.put('/markUnComplete', (request, response) => {
 
 })
 
-app.delete('/deleteItem', (request, response) => { // removes an item from collection
-    db.collection('todos').deleteOne({thing: request.body.itemFromJS}) // removes body of todo item from collection
+app.delete('/deleteItem', (request, response) => {
+    db.collection('workspaceNotes').deleteOne({note: request.body.itemFromJS})
     .then(result => {
-        console.log('Todo Deleted') // logs 'Todo Deleted' to console
-        response.json('Todo Deleted') // returns json response as 'Todo Deleted'
+        console.log('Note Deleted')
+        response.json('Note Deleted')
     })
-    .catch(error => console.error(error)) // catches error and logs error to console
+    .catch(error => console.error(error))
 
 })
+// app.delete('/deleteNote', (request, response) => { // removes an item from collection
+//     db.collection('workspaceNotes').deleteOne({note: request.body.noteFromJS}) // removes body of todo item from collection
+//     .then(result => {
+//         console.log('Note Resolved') // logs 'Todo Deleted' to console
+//         response.json('Note Resolved')
+//         response.redirect('/') // returns json response as 'Todo Deleted'
+//     })
+//     .catch(error => console.error(error)) // catches error and logs error to console
+
+// })
 
 app.listen(process.env.PORT || PORT, ()=>{ // server tries to loads on environment variable first; if not, then it will load on assigned port above (|| PORT)
     console.log(`Server running on port ${PORT}`) // logs the port that server is running on to the console

@@ -31,13 +31,15 @@
 
 		<section class="notes">
 			<h3>Notes</h3>
+			<!-- Poster printer needs a new maintenance tank! Ordered; expected delivery 07/06/22. -->
             <ul class="workspaceNotes">
                 <% for(let i=0; i < notes.length; i++) {%>
                     <li class="note">
                         <% if(notes[i].resolved === false) {%>
-                            <%= notes[i].note %>							
+                            <span><%= notes[i].note %></span>							
                         <% } %>
-						<span>Added on: <%= notes[i].date %> by Jeremy Sanders <a href="#">Resolved</a></span>
+						<span class="trash">Resolved</span>
+						<!-- <span>Added on: <%= notes[i].date %> by Jeremy Sanders </span>  -->
                     </li>
                 <% } %>
             </ul>
