@@ -36,10 +36,11 @@
                 <% for(let i=0; i < notes.length; i++) {%>
                     <li class="note">
                         <% if(notes[i].resolved === false) {%>
-                            <span><%= notes[i].note %></span>							
+                            <p><%= notes[i].note %>
+							</p>														
+							<span class="trash">Resolved</span>
                         <% } %>
-						<span class="trash">Resolved</span>
-						<!-- <span>Added on: <%= notes[i].date %> by Jeremy Sanders </span>  -->
+						<span>Added on: <%= notes[i].date %> by Jeremy Sanders</span> 
                     </li>
                 <% } %>
             </ul>

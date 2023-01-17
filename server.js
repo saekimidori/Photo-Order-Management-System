@@ -23,8 +23,8 @@ app.use(express.json())
 
 app.get('/',async (request, response)=>{
     const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
-    const itemsLeft = await db.collection('todos').countDocuments({completed: false}) // gets collection of documents that are not completed
-    response.render('index.ejs', { notes: workspaceNotes, left: itemsLeft }) // originally index.ejs
+    // const itemsLeft = await db.collection('todos').countDocuments({completed: false}) // gets collection of documents that are not completed
+    response.render('index.ejs', { notes: workspaceNotes }) // originally index.ejs
     // db.collection('todos').find().toArray()
     // .then(data => {
     //     db.collection('todos').countDocuments({completed: false})

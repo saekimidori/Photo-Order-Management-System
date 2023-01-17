@@ -24,11 +24,13 @@
 :root {
      --main-text-color: black;
      --main-accent-color: #21367a;
+     --main-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     --main-font-size: .8em;;
 }
 
 body {
-     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-     font-size: .8em;
+     font-family: var(--main-font-family);
+     font-size: var(--main-font-size);
      color: var(--main-text-color);
      margin: 1rem 3rem;
 }
@@ -186,6 +188,15 @@ blockquote {
      font-size: .9em;
      margin: .5em auto auto 3em;
      display: block;
+}
+
+/* Resolved button */
+span.trash {
+     display: inline-block;
+}
+.trash:hover {
+     color: white;
+     cursor: pointer;
 }
 
 textarea {
