@@ -1,5 +1,6 @@
 const express = require('express') // imports express
 const app = express() // assigns express to app variable
+const connectDB = require('./config/database')
 const MongoClient = require('mongodb').MongoClient // imports MongoDB client
 const PORT = 5000 // port is assigned to 6000
 require('dotenv').config({path: './config/.env'}) // loads environment variables
