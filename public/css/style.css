@@ -65,6 +65,11 @@ header {
      justify-content: space-between;
 } */
 
+.center {
+     display: flex;
+     justify-content: center;
+}
+
 .col-2 {
      display: flex;
      justify-content: space-between;
