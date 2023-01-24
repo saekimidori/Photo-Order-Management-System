@@ -66,8 +66,12 @@ header {
 } */
 
 .center {
-     display: flex;
-     justify-content: center;
+     position: absolute;
+     top: 45%;
+     left: 40%;
+     background-color: #d6ecfa;
+     border-radius: 10px;
+     padding: 2rem 1.5rem;
 }
 
 .col-2 {
