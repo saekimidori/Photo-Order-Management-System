@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>Photo Order Management System</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<div class="col-2">
+				<h1>Photo Order Management System</h1>
+				<p><a href="#">User Name</a><a href="#">Logout</a></p>
+			</div>
+			<span class="date">Wednesday, June 1, 2022 9:46 AM</span>
+		</header>
+
+
+		<h4>Order Search</h4>
+		<form action="">
+			<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
+			<input type="search">
+			<button>Search</button>
+		</form>
+		<p><a href="">Advanced Search</a> (Search by product)</p>
+
+		<section class="notes">
+			<h3>Notes</h3>
+			<!-- Poster printer needs a new maintenance tank! Ordered; expected delivery 07/06/22. -->
+			<ul>
+				<% notes.forEach( el => { %>
+					<li class='note' data-id='<%=el._id%>'>
+						<span class='<%= el.resolved === false ? 'unresolved' : 'resolved'%>'><%= el.note %></span>
+						<span class='del'> Delete </span>
+					</li>
+				<% }) %>    
+			</ul>
+            <!-- <ul class="workspaceNotes">
+                <% for(let i=0; i < notes.length; i++) {%>
+                    <li class="note">
+                        <% if(notes[i].resolved === false) {%>
+                            <p><%= notes[i].note %>
+							</p>														
+							<span class="trash">Resolved</span>
+                        <% } %>
+						<span>Added on: <%= notes[i].date %> by Jeremy Sanders</span> 
+                    </li>
+                <% } %>
+            </ul> -->
+			<button id="addNote">Add new note</button>
+				<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
+					<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
+					<button>Submit</button>
+				</form>
+		</section>
+		
+		
+		<section>
+			<h2>Workspace</h2>
+			<blockquote><b>Rolls Promise Time:</b> Roll Film dropped off today will be returned by Wednesday, June 08, 2022 at 5:00 PM</blockquote>
+			<table>
+				<thead>
+					<tr>
+						<th>Customer</th>
+						<th>Envelope Number</th>
+						<th>Promise Time</th>
+						<th>Type</th>
+						<th>Order Description</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<!-- Pop up a window of customer's order history and contact details -->
+						<!-- To open a link in a new window with specified size:
+						https://www.rapidtables.com/web/html/link/html-link-new-window.html#:~:text=Open%20a%20link%20in%20a%20new%20window%20with%20specified%20size -->
+						<td><a href="/customer-details" target="_blank">Stokes, Rowan</a></td>
+						<td><a href="order-details.html" target="_blank">477902</a></td>
+						<td>05/15/2022 10:27 PM</td>
+						<td>Internet 2042520132699</td>
+						<td>1HR - 1 16x20 Internet Poster</td>
+						<td><a href=#">Print Label</a></td>
+					</tr>
+					<tr>
+						<td>Gill, Kevin</td>
+						<td>477902</td>
+						<td>05/15/2022 10:27 PM</td>
+						<td>Internet 2042520132699</td>
+						<td>1HR - 1 16x20 Internet Poster</td>
+						<td>Print Label</td>
+					</tr>
+					<tr>
+						<td>Ortiz, Melissa</td>
+						<td>477902</td>
+						<td>05/15/2022 10:27 PM</td>
+						<td>Internet 2042520132699</td>
+						<td>1HR - 1 16x20 Internet Poster</td>
+						<td>Print Label</td>
+					</tr>
+					<tr>
+						<td>Bennet, Tricia</td>
+						<td>477902</td>
+						<td>05/15/2022 10:27 PM</td>
+						<td>Internet 2042520132699</td>
+						<td>1HR - 1 16x20 Internet Poster</td>
+						<td>Print Label</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

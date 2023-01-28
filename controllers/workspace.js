@@ -1,0 +1,75 @@
+const Note = require('../models/Note')
+
+module.exports = {
+    // getWorkspace: async (req,res)=>{
+    //     try{
+    //         // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
+    //         // const notes = await Note.find()
+    //         // const itemsLeft = await Note.countDocuments({completed: false})
+    //         res.render('workspace.ejs')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // },
+    getWorkspace: async (req,res)=>{
+        try{
+            // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
+            const notes = await Note.find()
+            // const itemsLeft = await Note.countDocuments({completed: false})
+            res.render('workspace.ejs', {notes: notes})
+        }catch(err){
+            console.log(err)
+        }
+    },
+    // app.post('/addWorkspaceNote', (request, response) => {
+//      // creates a new workspace note
+//     db.collection('workspaceNotes').insertOne({note: request.body.workspaceNote, resolved: false, date: new Date()}) // adds one new note to collection and defaults to unresolved 
+//     // ** add logged in user as identifier to note
+//     .then(result => {
+//         console.log('Workspace Note Added') // logs 'Workspace Note Added' to console
+//         response.redirect('/') // refreshes page
+//     })
+//     .catch(error => console.error(error)) // catches error and logs error to console
+// })
+    addWorkspaceNote: async (req, res)=>{
+        try{
+            await Note.create({note: req.body.workspaceNote, resolved: false, date: new Date()})
+            console.log('Note has been added!')
+            res.redirect('/workspace')
+        }catch(err){
+            console.log(err)
+        }
+    },
+    // markComplete: async (req, res)=>{
+    //     try{
+    //         await Note.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+    //             completed: true
+    //         })
+    //         console.log('Marked Complete')
+    //         res.json('Marked Complete')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // },
+    // markIncomplete: async (req, res)=>{
+    //     try{
+    //         await Note.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+    //             completed: false
+    //         })
+    //         console.log('Marked Incomplete')
+    //         res.json('Marked Incomplete')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // },
+    // deleteTodo: async (req, res)=>{
+    //     console.log(req.body.todoIdFromJSFile)
+    //     try{
+    //         await Note.findOneAndDelete({_id:req.body.todoIdFromJSFile})
+    //         console.log('Deleted Note')
+    //         res.json('Deleted It')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
+}    
