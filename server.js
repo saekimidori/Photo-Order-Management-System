@@ -18,7 +18,7 @@ let db, // asigns db variable
 //         console.log(`Connected to ${dbName} Database`) // logs the name of connected database to the console
 //         db = client.db(dbName) // assigns the client database to the variable db
 //     })
-    
+
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
