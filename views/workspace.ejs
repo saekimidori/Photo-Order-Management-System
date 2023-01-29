@@ -32,15 +32,15 @@
 		<section class="notes">
 			<h3>Notes</h3>
 			<!-- Poster printer needs a new maintenance tank! Ordered; expected delivery 07/06/22. -->
-			<ul>
+			<!-- <ul>
 				<% notes.forEach( el => { %>
 					<li class='note' data-id='<%=el._id%>'>
 						<span class='<%= el.resolved === false ? 'unresolved' : 'resolved'%>'><%= el.note %></span>
 						<span class='del'> Delete </span>
 					</li>
 				<% }) %>    
-			</ul>
-            <!-- <ul class="workspaceNotes">
+			</ul> -->
+            <ul class="workspaceNotes">
                 <% for(let i=0; i < notes.length; i++) {%>
                     <li class="note">
                         <% if(notes[i].resolved === false) {%>
@@ -51,7 +51,7 @@
 						<span>Added on: <%= notes[i].date %> by Jeremy Sanders</span> 
                     </li>
                 <% } %>
-            </ul> -->
+            </ul>
 			<button id="addNote">Add new note</button>
 				<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
 					<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
