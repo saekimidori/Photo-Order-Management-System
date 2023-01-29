@@ -17,4 +17,4 @@ const NoteSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('WorkspaceNote', NoteSchema)
+module.exports = mongoose.model('WorkspaceNote', NoteSchema) // first argument is database name. automatically turns plural in MongoDB
