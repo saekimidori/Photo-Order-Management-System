@@ -40,17 +40,17 @@ module.exports = {
             console.log(err)
         }
     },
-    // markComplete: async (req, res)=>{
-    //     try{
-    //         await Note.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-    //             completed: true
-    //         })
-    //         console.log('Marked Complete')
-    //         res.json('Marked Complete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
+    markResolved: async (req, res)=>{
+        try{
+            await Note.findOneAndUpdate({_id:req.body.itemFromJS},{
+                resolved: true
+            })
+            console.log('Marked Resolved')
+            res.json('Marked Resolved')
+        }catch(err){
+            console.log(err)
+        }
+    },
     // markIncomplete: async (req, res)=>{
     //     try{
     //         await Note.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
