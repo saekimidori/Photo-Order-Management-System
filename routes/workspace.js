@@ -10,6 +10,6 @@ router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 
-// router.delete('/deleteNote', workspaceController.deleteNote)
+router.delete('/deleteNote', workspaceController.deleteNote)
 
 module.exports = router

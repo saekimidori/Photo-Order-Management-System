@@ -62,14 +62,14 @@ module.exports = {
     //         console.log(err)
     //     }
     // },
-    // deleteTodo: async (req, res)=>{
-    //     console.log(req.body.todoIdFromJSFile)
-    //     try{
-    //         await Note.findOneAndDelete({_id:req.body.todoIdFromJSFile})
-    //         console.log('Deleted Note')
-    //         res.json('Deleted It')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // }
+    deleteNote: async (req, res)=>{
+        console.log(req.body.itemFromJS)
+        try{
+            await Note.findOneAndDelete({_id:req.body.itemFromJS})
+            console.log('Deleted Note')
+            res.json('Deleted It')
+        }catch(err){
+            console.log(err)
+        }
+    }
 }    

@@ -1,5 +1,5 @@
 const addNote = document.querySelector('#addNote')
-const deleteBtn = document.querySelectorAll('.trash')
+const deleteBtn = document.querySelectorAll('.resolved')
 const form = document.querySelector('#form')
 
 addNote.addEventListener('click', newNote)
@@ -9,14 +9,14 @@ function newNote() {
 }
 
 Array.from(deleteBtn).forEach((element)=>{
-        element.addEventListener('click', deleteItem)
+        element.addEventListener('click', deleteNote)
     })
     
 
-async function deleteItem(){
-        const itemText = this.parentNode.childNodes[1].innerText
+async function deleteNote(){
+        const itemText = this.parentNode.dataset.id
         try{
-            const response = await fetch('deleteItem', {
+            const response = await fetch('workspace/deleteNote', {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -25,8 +25,7 @@ async function deleteItem(){
               })
             const data = await response.json()
             console.log(data)
-            location.reload()
-    
+            location.reload()    
         }catch(err){
             console.log(err)
         }

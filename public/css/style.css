@@ -200,10 +200,10 @@ blockquote {
 }
 
 /* Resolved button */
-span.trash {
+span.resolved {
      display: inline-block;
 }
-.trash:hover {
+.resolved:hover {
      color: white;
      cursor: pointer;
 }
