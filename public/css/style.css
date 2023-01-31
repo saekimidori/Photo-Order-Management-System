@@ -200,11 +200,18 @@ blockquote {
 }
 
 /* Resolved button */
-span.resolved {
+span.resolved,
+span.delete {
      display: inline-block;
+     margin: auto;
+     background-color: white;
+     border-radius: 5px;
+     padding: 5px;
 }
-.resolved:hover {
+.resolved:hover,
+.delete:hover {
      color: white;
+     background-color: var(--main-accent-color);
      cursor: pointer;
 }
 
