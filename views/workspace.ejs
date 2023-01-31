@@ -35,13 +35,28 @@
 			<ul class="workspaceNotes">
 				<% notes.forEach( el => { %>
 					<li class='note' data-id='<%=el._id%>'>
-						<% if (el.resolved === false) %>
-							<p><%= el.note %></p>
-						<span class='resolved'> Resolved </span>
-						<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
+						<% if (el.resolved === false) { %>
+							<p><%= el.note %>
+								<span class='resolved'>Resolved</span> | <span class="delete">Delete</span>
+							</p>
+							<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
+							
+						<% } %>
 					</li>
 				<% }) %>    
 			</ul>
+
+			<!-- <h3>Recently Resolved</h3>
+			<ul class="workspaceNotes">
+				<% notes.forEach( el => { %>
+					<li class='note' data-id='<%=el._id%>'>
+						<% if (el.resolved === true) { %>
+							<p><%= el.note %></p>
+							<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
+						<% } %>
+					</li>
+				<% }) %>    
+			</ul> -->
             <!-- <ul class="workspaceNotes">
                 <% for(let i=0; i < notes.length; i++) {%>
                     <li class="note">
