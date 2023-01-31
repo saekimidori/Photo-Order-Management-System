@@ -51,6 +51,17 @@ module.exports = {
             console.log(err)
         }
     },
+    updateNote: async (req, res)=>{
+        try{
+            await Note.findOneAndUpdate({_id:req.body.itemFromJS},{
+                note: req.body.itemFromJS
+            })
+            console.log('Note edited')
+            res.json('Note edited')
+        }catch(err){
+            console.log(err)
+        }
+    },
     // markIncomplete: async (req, res)=>{
     //     try{
     //         await Note.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{

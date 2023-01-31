@@ -36,11 +36,11 @@
 				<% notes.forEach( el => { %>
 					<li class='note' data-id='<%=el._id%>'>
 						<% if (el.resolved === false) { %>
-							<p><%= el.note %>
-								<span class='resolved'>Resolved</span> | <span class="delete">Delete</span>
+							<p>
+								<%= el.note %>
+								<span class='resolved'>Resolved</span> | <span class="edit">Edit</span> | <span class="delete">Delete</span>
 							</p>
 							<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
-							
 						<% } %>
 					</li>
 				<% }) %>    
@@ -74,6 +74,12 @@
 					<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
 					<button>Submit</button>
 				</form>
+
+			<h5>Edit Note</h5>
+			<form action="/workspace/updateNote" method="PUT" id="editForm" class="hidden">
+				<textarea name="updateNote" id="" cols="" rows="7" placeholder=""></textarea>
+				<button id="updateNoteBtn">Update Note</button>
+			</form>
 		</section>
 		
 		

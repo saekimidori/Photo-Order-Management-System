@@ -8,6 +8,8 @@ router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 
 router.put('/markResolved', workspaceController.markResolved)
 
+router.put('/updateNote', workspaceController.updateNote)
+
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 
 router.delete('/deleteNote', workspaceController.deleteNote)
