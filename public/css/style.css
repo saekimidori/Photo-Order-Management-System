@@ -201,6 +201,7 @@ blockquote {
 
 /* Resolved button */
 span.resolved,
+span.edit,
 span.delete {
      display: inline-block;
      margin: auto;
@@ -209,6 +210,7 @@ span.delete {
      padding: 5px;
 }
 .resolved:hover,
+.edit:hover,
 .delete:hover {
      color: white;
      background-color: var(--main-accent-color);
