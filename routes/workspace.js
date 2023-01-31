@@ -6,7 +6,7 @@ router.get('/', workspaceController.getWorkspace)
 
 router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 
-// router.put('/markComplete', workspaceController.markComplete)
+router.put('/markResolved', workspaceController.markResolved)
 
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 
