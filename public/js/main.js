@@ -16,7 +16,7 @@ function newNote() {
     form.classList.toggle('hidden')
 }
 
-function editNote() {
+function displayEditForm() {
     editForm.classList.toggle('hidden')
 }
 
@@ -25,7 +25,7 @@ Array.from(resolvedBtn).forEach((element)=>{
 })
 
 Array.from(editBtn).forEach((element)=>{
-    element.addEventListener('click', editNote)
+    element.addEventListener('click', displayEditForm)
 })
 
 Array.from(deleteBtn).forEach((element)=>{
@@ -55,7 +55,7 @@ async function updateNote(){
     const itemText = this.parentNode.dataset.id
     // updateNote.classList.toggle('hidden')
     try{
-        const response = await fetch('workspace/editNote', {
+        const response = await fetch('workspace/updateNote', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
