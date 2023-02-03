@@ -1,16 +1,6 @@
 const Note = require('../models/Note')
 
 module.exports = {
-    // getWorkspace: async (req,res)=>{
-    //     try{
-    //         // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
-    //         // const notes = await Note.find()
-    //         // const itemsLeft = await Note.countDocuments({completed: false})
-    //         res.render('workspace.ejs')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
     getWorkspace: async (req,res)=>{
         try{
             // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
@@ -21,16 +11,16 @@ module.exports = {
             console.log(err)
         }
     },
-    // app.post('/addWorkspaceNote', (request, response) => {
-//      // creates a new workspace note
-//     db.collection('workspaceNotes').insertOne({note: request.body.workspaceNote, resolved: false, date: new Date()}) // adds one new note to collection and defaults to unresolved 
-//     // ** add logged in user as identifier to note
-//     .then(result => {
-//         console.log('Workspace Note Added') // logs 'Workspace Note Added' to console
-//         response.redirect('/') // refreshes page
-//     })
-//     .catch(error => console.error(error)) // catches error and logs error to console
-// })
+    search: async (req,res)=>{
+        try{
+            // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
+            const notes = await Note.find()
+            // const itemsLeft = await Note.countDocuments({completed: false})
+            res.render('search-results.ejs', {notes: notes})
+        }catch(err){
+            console.log(err)
+        }
+    },
     addWorkspaceNote: async (req, res)=>{
         try{
             await Note.create({note: req.body.workspaceNote, resolved: false, date: new Date()})
@@ -52,10 +42,15 @@ module.exports = {
         }
     },
     updateNote: async (req, res)=>{
+        console.log(req.body.itemFromJS)
+        console.log(req.body.updatedNote)
+        
         try{
             await Note.findOneAndUpdate({_id:req.body.itemFromJS},{
-                note: req.body.itemFromJS
-            })
+                note: req.body.updatedNote
+            }, {
+                returnOriginal: false
+              })
             console.log('Note edited')
             res.json('Note edited')
         }catch(err){

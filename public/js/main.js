@@ -1,3 +1,4 @@
+const searchBtn = document.querySelector('#search')
 const addNote = document.querySelector('#addNote')
 const updateNoteBtn = document.querySelector('#updateNoteBtn')
 const resolvedBtn = document.querySelectorAll('.resolved')
@@ -6,7 +7,7 @@ const deleteBtn = document.querySelectorAll('.delete')
 const form = document.querySelector('#form')
 const editForm = document.querySelector('#editForm')
 
-
+searchBtn.addEventListener('click', search)
 
 addNote.addEventListener('click', newNote)
 
@@ -31,6 +32,25 @@ Array.from(editBtn).forEach((element)=>{
 Array.from(deleteBtn).forEach((element)=>{
     element.addEventListener('click', deleteNote)
 })
+
+async function search(){
+    const itemText = this.parentNode.dataset.id
+    try{
+        const response = await fetch('workspace/search', {
+            method: 'get',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'itemFromJS': itemText
+            })
+          })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+
+    }catch(err){
+        console.log(err)
+    }
+}
     
 async function markResolved(){
       const itemText = this.parentNode.dataset.id
@@ -53,6 +73,7 @@ async function markResolved(){
 
 async function updateNote(){
     const itemText = this.parentNode.dataset.id
+    console.log(itemText)
     // updateNote.classList.toggle('hidden')
     try{
         const response = await fetch('workspace/updateNote', {

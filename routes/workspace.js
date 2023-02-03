@@ -4,6 +4,8 @@ const workspaceController = require('../controllers/workspace')
 
 router.get('/', workspaceController.getWorkspace)
 
+router.get('/search', workspaceController.search)
+
 router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 
 router.put('/markResolved', workspaceController.markResolved)
