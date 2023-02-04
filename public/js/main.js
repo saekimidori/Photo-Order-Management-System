@@ -1,9 +1,12 @@
-const searchBtn = document.querySelector('#search')
+///// Buttons
+const searchBtn = document.querySelector('#searchBtn')
 const addNote = document.querySelector('#addNote')
 const updateNoteBtn = document.querySelector('#updateNoteBtn')
 const resolvedBtn = document.querySelectorAll('.resolved')
 const editBtn = document.querySelectorAll('.edit')
 const deleteBtn = document.querySelectorAll('.delete')
+
+///// Forms
 const form = document.querySelector('#form')
 const editForm = document.querySelector('#editForm')
 
