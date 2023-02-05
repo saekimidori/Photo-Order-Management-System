@@ -17,6 +17,7 @@ addNote.addEventListener('click', newNote)
 updateNoteBtn.addEventListener('click', updateNote)
 
 function newNote() {
+    // addNote.innerHTML = 'Cancel' // should toggle
     form.classList.toggle('hidden')
 }
 
