@@ -11,9 +11,9 @@ const NoteSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  date: {
-    type: String,
-    required: true,
+  createdOn: {
+    type: Date,
+    default: Date.now,
   }
 })
 
