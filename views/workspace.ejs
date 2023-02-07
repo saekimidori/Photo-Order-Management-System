@@ -41,7 +41,7 @@
 								<%= el.note %>
 								<span class='resolved'>Resolved</span> | <span class="edit">Edit</span> | <span class="delete">Delete</span>
 							</p>
-							<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
+							<span>Added on: <%= el.createdOn || el.date %> by Jeremy Sanders</span> 
 						<% } %>
 					</li>
 				<% }) %>    
@@ -77,7 +77,7 @@
 				</form>
 
 			<h5>Edit Note</h5>
-			<form action="/workspace/updateNote" method="PUT" id="editForm" class="hidden">
+			<form action="/workspace/updateNote/:_id" method="PUT" id="editForm" class="hidden">
 				<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
 				<button id="updateNoteBtn">Update Note</button>
 			</form>
