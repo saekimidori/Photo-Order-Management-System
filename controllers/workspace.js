@@ -4,7 +4,7 @@ module.exports = {
     getWorkspace: async (req,res)=>{
         try{
             // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
-            const notes = await Note.find()
+            const notes = await Note.find().sort({ createdOn: 'desc' }).lean()
             // const itemsLeft = await Note.countDocuments({completed: false})
             res.render('workspace.ejs', {notes: notes})
         }catch(err){
@@ -23,7 +23,7 @@ module.exports = {
     },
     addWorkspaceNote: async (req, res)=>{
         try{
-            await Note.create({note: req.body.workspaceNote, resolved: false, date: new Date()})
+            await Note.create({note: req.body.workspaceNote, resolved: false})
             console.log('Note has been added!')
             res.redirect('/workspace')
         }catch(err){
@@ -48,9 +48,16 @@ module.exports = {
         try{
             await Note.findOneAndUpdate({_id:req.body.itemFromJS},{
                 note: req.body.updatedNote
-            }, {
-                returnOriginal: false
-              })
+            }, 
+            // { new: true },
+    
+            // the callback function
+            (err, note) => {
+            // Handle any possible database errors
+                if (err) return res.status(500).send(err);
+                return res.send(note);
+            }
+            )
             console.log('Note edited')
             res.json('Note edited')
         }catch(err){
