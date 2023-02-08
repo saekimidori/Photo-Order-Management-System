@@ -1,6 +1,7 @@
 const express = require('express') // imports express
 const app = express() // assigns express to app variable
 const connectDB = require('./config/database')
+const methodOverride = require("method-override")
 const homeRoutes = require('./routes/home')
 const workspaceRoutes = require('./routes/workspace')
 // const MongoClient = require('mongodb').MongoClient // imports MongoDB client
@@ -23,6 +24,10 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+
+//Use forms for put / delete
+app.use(methodOverride("_method"))
 
 
 app.use('/', homeRoutes)
