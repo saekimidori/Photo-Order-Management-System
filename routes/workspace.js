@@ -10,7 +10,13 @@ router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 
 router.put('/markResolved', workspaceController.markResolved)
 
-router.put('/updateNote', workspaceController.updateNote)
+// Retrieve a single Note with noteId
+router.get('/:noteId', workspaceController.findOne);
+
+// Update a Note with noteId
+router.put('/:noteId', workspaceController.updateNote);
+
+// router.put('/updateNote/:id', workspaceController.updateNote)
 
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 
