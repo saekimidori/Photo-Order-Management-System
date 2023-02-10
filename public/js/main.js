@@ -16,9 +16,15 @@ addNote.addEventListener('click', newNote)
 
 updateNoteBtn.addEventListener('click', updateNote)
 
+// function to display form for adding a new note
 function newNote() {
-    // addNote.innerHTML = 'Cancel' // should toggle
     form.classList.toggle('hidden')
+    // Changes the button to add new note to 'Cancel' to hide the form
+    if (addNote.innerHTML === 'Add new note') {
+        addNote.innerHTML = 'Cancel new note'
+    } else {
+        addNote.innerHTML = 'Add new note'
+    }
 }
 
 function displayEditForm() {
@@ -76,11 +82,11 @@ async function markResolved(){
 }
 
 async function updateNote(){
-    const itemText = this.parentNode.dataset.id
+    const itemText = this.parentNode.parentNode.dataset.id
     console.log(itemText)
     // updateNote.classList.toggle('hidden')
     try{
-        const response = await fetch('workspace/updateNote', {
+        const response = await fetch('workspace/:noteId/update', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
