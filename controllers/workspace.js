@@ -41,57 +41,75 @@ module.exports = {
             console.log(err)
         }
     },
-    // Find a single note with a noteId
-    findOne: async (req, res) => {
-        Note.findById(req.params.noteId)
-        .then(note => {
-            if(!note) {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.noteId
-                });            
-            }
-            res.send(note);
-        }).catch(err => {
-            if(err.kind === 'ObjectId') {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.noteId
-                });                
-            }
-            return res.status(500).send({
-                message: "Error retrieving note with id " + req.params.noteId
-            });
-        });
-    },
     updateNote: async (req, res) => {
-        // Validate Request
-        if(!req.body.updatedNote) {
-            return res.status(400).send({
-                message: "Note content can not be empty"
-            });
-        }
+        Note.findOneAndUpdate(
+            {id: req.params.id},
+            {
+                $set: {
+                note: req.body.updatedNote
+                }
+            },
+            // {
+            //     upsert: true
+            // }
+        
+        )
+            .then(result => {
+                res.json('Success')
+            })
+            .catch(error => console.error(error))
+      },
+    // // Find a single note with a noteId
+    // findOne: async (req, res) => {
+    //     Note.findById(req.params.noteId)
+    //     .then(note => {
+    //         if(!note) {
+    //             return res.status(404).send({
+    //                 message: "Note not found with id " + req.params.noteId
+    //             });            
+    //         }
+    //         res.send(note);
+    //     }).catch(err => {
+    //         if(err.kind === 'ObjectId') {
+    //             return res.status(404).send({
+    //                 message: "Note not found with id " + req.params.noteId
+    //             });                
+    //         }
+    //         return res.status(500).send({
+    //             message: "Error retrieving note with id " + req.params.noteId
+    //         });
+    //     });
+    // },
+    // updateNote: async (req, res) => {
+    //     // Validate Request
+    //     if(!req.body.updatedNote) {
+    //         return res.status(400).send({
+    //             message: "Note content can not be empty"
+    //         });
+    //     }
     
-        // Find note and update it with the request body
-        Note.findByIdAndUpdate(req.params.noteId, {
-            note: req.body.updatedNote
-        }, {new: true})
-        .then(note => {
-            if(!note) {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.noteId
-                });
-            }
-            res.send(note);
-        }).catch(err => {
-            if(err.kind === 'ObjectId') {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.noteId
-                });                
-            }
-            return res.status(500).send({
-                message: "Error updating note with id " + req.params.noteId
-            });
-        });
-    },
+    //     // Find note and update it with the request body
+    //     Note.findByIdAndUpdate(req.params.noteId, {
+    //         note: req.body.updatedNote
+    //     }, {new: true})
+    //     .then(note => {
+    //         if(!note) {
+    //             return res.status(404).send({
+    //                 message: "Note not found with id " + req.params.noteId
+    //             });
+    //         }
+    //         res.send(note);
+    //     }).catch(err => {
+    //         if(err.kind === 'ObjectId') {
+    //             return res.status(404).send({
+    //                 message: "Note not found with id " + req.params.noteId
+    //             });                
+    //         }
+    //         return res.status(500).send({
+    //             message: "Error updating note with id " + req.params.noteId
+    //         });
+    //     });
+    // },
     // updateNote: async (req, res)=>{
     //     // console.log(req)
     //     console.log(req.body)

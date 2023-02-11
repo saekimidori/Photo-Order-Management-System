@@ -37,6 +37,18 @@ function newNote() {
 
 function displayEditForm() {
     editForm.classList.toggle('hidden')
+    async (req, res) => {
+            Note.findById(req.params.noteId)
+            .then(note => {
+                if(!note) {
+                    return res.status(404).send({
+                        message: "Note not found with id " + req.params.noteId
+                    });            
+                }
+                res.send(note);
+                editForm.innerHTML = req.body
+            })
+    }
 }
 
 async function search(){
