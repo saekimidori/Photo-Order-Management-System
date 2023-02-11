@@ -10,16 +10,24 @@ const deleteBtn = document.querySelectorAll('.delete')
 const form = document.querySelector('#form')
 const editForm = document.querySelector('#editForm')
 
+///// Click events
 searchBtn.addEventListener('click', search)
-
 addNote.addEventListener('click', newNote)
-
 updateNoteBtn.addEventListener('click', updateNote)
+Array.from(resolvedBtn).forEach((element)=>{
+    element.addEventListener('click', markResolved)
+})
+Array.from(editBtn).forEach((element)=>{
+    element.addEventListener('click', displayEditForm)
+})
+Array.from(deleteBtn).forEach((element)=>{
+    element.addEventListener('click', deleteNote)
+})
 
 // function to display form for adding a new note
 function newNote() {
     form.classList.toggle('hidden')
-    // Changes the button to add new note to 'Cancel' to hide the form
+    // Changes the 'Add new note' button text to 'Cancel' to hide the form
     if (addNote.innerHTML === 'Add new note') {
         addNote.innerHTML = 'Cancel new note'
     } else {
@@ -30,18 +38,6 @@ function newNote() {
 function displayEditForm() {
     editForm.classList.toggle('hidden')
 }
-
-Array.from(resolvedBtn).forEach((element)=>{
-    element.addEventListener('click', markResolved)
-})
-
-Array.from(editBtn).forEach((element)=>{
-    element.addEventListener('click', displayEditForm)
-})
-
-Array.from(deleteBtn).forEach((element)=>{
-    element.addEventListener('click', deleteNote)
-})
 
 async function search(){
     const itemText = this.parentNode.dataset.id
