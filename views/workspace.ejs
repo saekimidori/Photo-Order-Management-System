@@ -38,13 +38,17 @@
 				<button>Submit</button>
 			</form>
 			<ul class="workspaceNotes">
-				<% notes.forEach( note => { %>
-					<li class='note' data-id='<%=note._id%>'>
+				<% workspaceNotes.forEach( note => { %>
+					<li class='note' data-id='<%=note.id%>'>
 						<% if (note.resolved === false) { %>
-							<p>
+							
 								<%= note.note %>
 								<span class='resolved'>Resolved</span> | <span class="edit">Edit</span> | <span class="delete">Delete</span>
-							</p>
+							
+							<form action="/workspace/:noteId/update?_method=PUT"" method="POST" id="editForm" class="hidden">
+								<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
+								<button id="updateNoteBtn" type="submit">Update Note</button>
+							</form>
 							<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 							
 						<% } %>
 					</li>
@@ -53,7 +57,7 @@
 
 			<!-- <h3>Recently Resolved</h3>
 			<ul class="workspaceNotes">
-				<% notes.forEach( el => { %>
+				<% workspaceNotes.forEach( el => { %>
 					<li class='note' data-id='<%=el._id%>'>
 						<% if (el.resolved === true) { %>
 							<p><%= el.note %></p>
@@ -63,25 +67,22 @@
 				<% }) %>    
 			</ul> -->
             <!-- <ul class="workspaceNotes">
-                <% for(let i=0; i < notes.length; i++) {%>
+                <% for(let i=0; i < workspaceNotes.length; i++) {%>
                     <li class="note">
-                        <% if(notes[i].resolved === false) {%>
-                            <p><%= notes[i].note %>
+                        <% if(workspaceNotes[i].resolved === false) {%>
+                            <p><%= workspaceNotes[i].note %>
 							</p>														
 							<span class="trash">Resolved</span>
                         <% } %>
-						<span>Added on: <%= notes[i].date %> by Jeremy Sanders</span> 
+						<span>Added on: <%= workspaceNotes[i].date %> by Jeremy Sanders</span> 
                     </li>
                 <% } %>
             </ul> -->
 			
 
 			<h5>Edit Note</h5>
-			<!-- <%=notes._id%> -->
-			<form action="/workspace/:noteId/update?_method=PUT"" method="POST" id="editForm" class="hidden">
-				<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
-				<button id="updateNoteBtn" type="submit">Update Note</button>
-			</form>
+			<!-- <%=workspaceNotes._id%> -->
+			
 		</section>
 		
 		

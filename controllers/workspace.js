@@ -4,9 +4,9 @@ module.exports = {
     getWorkspace: async (req,res)=>{
         try{
             // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
-            const notes = await Note.find().sort({ createdOn: 'desc' }).lean()
+            const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
             // const itemsLeft = await Note.countDocuments({completed: false})
-            res.render('workspace.ejs', {notes: notes})
+            res.render('workspace.ejs', {workspaceNotes: workspaceNotes})
         }catch(err){
             console.log(err)
         }
