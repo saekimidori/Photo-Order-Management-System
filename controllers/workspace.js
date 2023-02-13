@@ -31,8 +31,10 @@ module.exports = {
         }
     },
     markResolved: async (req, res)=>{
+        console.log(req.params.id)
+        console.log(req.body.itemFromJS)
         try{
-            await Note.findOneAndUpdate({_id:req.body.itemFromJS},{
+            await Note.findOneAndUpdate({id:req.params.id},{
                 resolved: true
             })
             console.log('Marked Resolved')
@@ -41,45 +43,47 @@ module.exports = {
             console.log(err)
         }
     },
-    updateNote: async (req, res) => {
-        Note.findOneAndUpdate(
-            {id: req.params.id},
-            {
-                $set: {
-                note: req.body.updatedNote
-                }
-            },
-            // {
-            //     upsert: true
-            // }
+    // updateNote: async (req, res) => {
+    //     console.log(req.params._id)
+    //     Note.findOneAndUpdate(
+    //         {id: req.params.id},
+    //         {
+    //             $set: {
+    //             note: req.body.updatedNote
+    //             }
+    //         },
+    //         // {
+    //         //     upsert: true
+    //         // }
         
-        )
-            .then(result => {
-                res.json('Success')
-            })
-            .catch(error => console.error(error))
-      },
-    // // Find a single note with a noteId
-    // findOne: async (req, res) => {
-    //     Note.findById(req.params.noteId)
-    //     .then(note => {
-    //         if(!note) {
-    //             return res.status(404).send({
-    //                 message: "Note not found with id " + req.params.noteId
-    //             });            
-    //         }
-    //         res.send(note);
-    //     }).catch(err => {
-    //         if(err.kind === 'ObjectId') {
-    //             return res.status(404).send({
-    //                 message: "Note not found with id " + req.params.noteId
-    //             });                
-    //         }
-    //         return res.status(500).send({
-    //             message: "Error retrieving note with id " + req.params.noteId
-    //         });
-    //     });
-    // },
+    //     )
+    //         .then(result => {
+    //             res.json('Success')
+    //         })
+    //         .catch(error => console.error(error))
+    //   },
+    // Find a single note with a noteId
+    findOne: async (req, res) => {
+        console.log(req.params.id)
+        Note.findById(req.params.id)
+        .then(note => {
+            if(!note) {
+                return res.status(404).send({
+                    message: "Note not found with id " + req.params.id
+                });            
+            }
+            res.send(note);
+        }).catch(err => {
+            if(err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "Note not found with id " + req.params.id
+                });                
+            }
+            return res.status(500).send({
+                message: "Error retrieving note with id " + req.params.id
+            });
+        });
+    },
     // updateNote: async (req, res) => {
     //     // Validate Request
     //     if(!req.body.updatedNote) {
