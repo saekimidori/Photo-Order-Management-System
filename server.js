@@ -7,6 +7,7 @@ const homeRoutes = require('./routes/home')
 const workspaceRoutes = require('./routes/workspace')
 // const MongoClient = require('mongodb').MongoClient // imports MongoDB client
 const PORT = 5000 // port is assigned to 6000
+const mongoose = require("mongoose");
 require('dotenv').config({path: './config/.env'}) // loads environment variables
 
 connectDB()
