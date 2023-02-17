@@ -20,6 +20,6 @@ router.get('/:id', workspaceController.findOne);
 
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 
-router.delete('/delete/:id', workspaceController.deleteNote)
+router.get('/delete/:id', workspaceController.deleteNote)
 
 module.exports = router

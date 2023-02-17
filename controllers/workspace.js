@@ -155,12 +155,10 @@ module.exports = {
     // },
     deleteNote: async (req, res)=>{
         const id = req.params.id
-        console.log(id)
-        // console.log(req.body.itemFromJS)
         try{
-            await Note.findByIdAndDelete({_id: id})
+            await Note.findByIdAndDelete(id)
+            res.redirect('back')
             console.log('Deleted Note')
-            res.json('Deleted Note')
         }catch(err){
             console.log(err)
         }
