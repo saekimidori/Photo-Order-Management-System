@@ -3,6 +3,7 @@ const router = express.Router()
 const workspaceController = require('../controllers/workspace')
 
 router.get('/', workspaceController.getWorkspace)
+router.get('/:id', workspaceController.getEdit)
 
 router.get('/search', workspaceController.search)
 
@@ -11,7 +12,7 @@ router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 router.post('/markResolved/:id', workspaceController.markResolved)
 
 // Retrieve a single Note with noteId
-router.get('/:id', workspaceController.findOne);
+// router.get('/:id', workspaceController.findOne);
 
 // Update a Note with noteId
 // router.put('/:noteId/update', workspaceController.updateNote);
