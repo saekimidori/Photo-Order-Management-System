@@ -11,6 +11,15 @@ module.exports = {
             console.log(err)
         }
     },
+    getEdit: async (req, res) => {
+        const id = req.params.id
+        try{
+            const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
+            res.render('edit.ejs', {workspaceNotes: workspaceNotes, noteId: id})
+        }catch(err){
+            console.log(err)
+        }
+    },
     search: async (req,res)=>{
         try{
             // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
@@ -64,27 +73,7 @@ module.exports = {
     //         .catch(error => console.error(error))
     //   },
     // Find a single note with a noteId
-    findOne: async (req, res) => {
-        console.log(req.params.id)
-        Note.findById(req.params.id)
-        .then(note => {
-            if(!note) {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.id
-                });            
-            }
-            res.send(note);
-        }).catch(err => {
-            if(err.kind === 'ObjectId') {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.id
-                });                
-            }
-            return res.status(500).send({
-                message: "Error retrieving note with id " + req.params.id
-            });
-        });
-    },
+    
     // updateNote: async (req, res) => {
     //     // Validate Request
     //     if(!req.body.updatedNote) {
