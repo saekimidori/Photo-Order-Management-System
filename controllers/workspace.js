@@ -31,14 +31,17 @@ module.exports = {
         }
     },
     markResolved: async (req, res)=>{
-        console.log(req.params.id)
-        console.log(req.body.itemFromJS)
+        const id = req.params.id
+        console.log(id)
+        // console.log(req.body.itemFromJS)
         try{
-            await Note.findOneAndUpdate({id:req.params.id},{
-                resolved: true
-            })
-            console.log('Marked Resolved')
-            res.json('Marked Resolved')
+            await Note.findByIdAndUpdate(id,
+                {
+                    resolved: true
+                })
+                console.log('Marked Resolved')
+                res.json('Marked Resolved')
+                res.redirect('/workspace')
         }catch(err){
             console.log(err)
         }
@@ -153,11 +156,13 @@ module.exports = {
     //     }
     // },
     deleteNote: async (req, res)=>{
-        console.log(req.body.itemFromJS)
+        const id = req.params.id
+        console.log(id)
+        // console.log(req.body.itemFromJS)
         try{
-            await Note.findOneAndDelete({_id:req.body.itemFromJS})
+            await Note.findByIdAndDelete({_id: id})
             console.log('Deleted Note')
-            res.json('Deleted It')
+            res.json('Deleted Note')
         }catch(err){
             console.log(err)
         }

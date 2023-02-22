@@ -37,18 +37,24 @@
 				<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
 				<button>Submit</button>
 			</form>
+			<form action="/workspace/:id" method="GET" id="editForm" class="hidden">
+				<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
+				<button id="updateNoteBtn" type="submit">Update Note</button>
+			</form>
 			<ul class="workspaceNotes">
 				<% workspaceNotes.forEach( note => { %>
-					<li class='note' data-id='<%=note.id%>'>
-						<% if (note.resolved === false) { %>
-							
+					<li class='note' data-id='<%=note._id%>'>
+						<% if (note.resolved === false) { %>							
 								<%= note.note %>
-								<span class='resolved'>Resolved</span> | <span class="edit">Edit</span> | <span class="delete">Delete</span>
+								<!-- <span class='resolved'>Resolved</span> -->
+								<!-- <a href="/workspace/markResolved/<%= note._id %>">Resolved</a> -->
+								<form action="/workspace/markResolved/<%= note._id %>" method="POST">
+									<button type="submit">Resolved</button>
+								</form>
+        | <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
 							
-							<form action="/workspace/:noteId/update?_method=PUT"" method="POST" id="editForm" class="hidden">
-								<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
-								<button id="updateNoteBtn" type="submit">Update Note</button>
-							</form>
+								<!-- /workspace/:noteId/update?_method=PUT -->
+							
 							<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 							
 						<% } %>
 					</li>

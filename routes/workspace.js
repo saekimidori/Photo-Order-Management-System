@@ -8,18 +8,18 @@ router.get('/search', workspaceController.search)
 
 router.post('/addWorkspaceNote', workspaceController.addWorkspaceNote)
 
-router.put('/markResolved', workspaceController.markResolved)
+router.post('/markResolved/:id', workspaceController.markResolved)
 
 // Retrieve a single Note with noteId
-// router.get('/:noteId', workspaceController.findOne);
+router.get('/:id', workspaceController.findOne);
 
 // Update a Note with noteId
-router.put('/:noteId/update', workspaceController.updateNote);
+// router.put('/:noteId/update', workspaceController.updateNote);
 
 // router.put('/updateNote/:id', workspaceController.updateNote)
 
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 
-router.delete('/deleteNote', workspaceController.deleteNote)
+router.delete('/delete/:id', workspaceController.deleteNote)
 
 module.exports = router
