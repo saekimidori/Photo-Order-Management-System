@@ -32,16 +32,14 @@ module.exports = {
     },
     markResolved: async (req, res)=>{
         const id = req.params.id
-        console.log(id)
         // console.log(req.body.itemFromJS)
         try{
             await Note.findByIdAndUpdate(id,
                 {
                     resolved: true
                 })
+                res.redirect('back')
                 console.log('Marked Resolved')
-                res.json('Marked Resolved')
-                res.redirect('/workspace')
         }catch(err){
             console.log(err)
         }
