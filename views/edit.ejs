@@ -42,8 +42,8 @@
 				<% workspaceNotes.forEach( note => { %>
 					<% if (note._id == noteId) { %>
 						<form action="/workspace/update/<%=note._id%>" method="POST" id="editForm">
-							<textarea name="updatedNote" id="" cols="" rows="7" value="<%= note.note %>"></textarea>
-							<button type="submit">Update Note</button> <a href="/">Cancel</a>
+							<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""><%= note.note %></textarea>
+							<button type="submit">Update Note</button> <a href="/workspace">Cancel</a>
 						</form>
 					<% } else { %>
 					<li class='note' data-id='<%=note._id%>'>
