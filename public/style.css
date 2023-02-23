@@ -122,7 +122,9 @@ a:hover {
 }
 
 button,
-.button {
+.button,
+.notes a {
+     color: var(--main-text-color);
      font-size: .75rem;
      background-color: white;
      border: 1px solid var(--main-text-color);
@@ -131,10 +133,16 @@ button,
 }
 
 button:hover,
-.button:hover {
+.button:hover,
+.notes a:hover {
      color: white;
      background-color: var(--main-accent-color);
      cursor: pointer;
+}
+
+/* makes the mark resolved button stay in line with other text */
+form.resolvedBtn {
+     display: inline-block;
 }
 
 table {

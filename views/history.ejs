@@ -40,10 +40,10 @@
 						<% } else { %>
 							<li class='note' data-id='<%=note._id%>'>
 							<%= note.note %>
-								<form action="/workspace/markResolved/<%= note._id %>" method="POST">
-									<button type="submit">Resolved</button>
-								</form>
-        | <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
+							<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+								<button type="submit">Mark Resolved</button>
+							</form>
+	| <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
 							<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 							
 						<% } %>
 					</li>
