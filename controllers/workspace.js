@@ -20,6 +20,14 @@ module.exports = {
             console.log(err)
         }
     },
+    getHistory: async (req,res)=>{
+        try{
+            const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
+            res.render('history.ejs', {workspaceNotes: workspaceNotes})
+        }catch(err){
+            console.log(err)
+        }
+    },
     search: async (req,res)=>{
         try{
             // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array

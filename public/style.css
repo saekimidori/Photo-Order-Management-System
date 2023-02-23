@@ -222,6 +222,10 @@ textarea {
      margin-top: .3rem;
 }
 
+p.history {
+     text-align: right;
+}
+
 .hidden {
      display: none;
 }
