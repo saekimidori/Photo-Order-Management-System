@@ -17,7 +17,7 @@ router.post('/markResolved/:id', workspaceController.markResolved)
 // Update a Note with noteId
 // router.put('/:noteId/update', workspaceController.updateNote);
 
-// router.put('/updateNote/:id', workspaceController.updateNote)
+router.post('/update/:id', workspaceController.updateNote)
 
 // router.put('/markIncomplete', workspaceController.markIncomplete)
 

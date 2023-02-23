@@ -53,25 +53,19 @@ module.exports = {
             console.log(err)
         }
     },
-    // updateNote: async (req, res) => {
-    //     console.log(req.params._id)
-    //     Note.findOneAndUpdate(
-    //         {id: req.params.id},
-    //         {
-    //             $set: {
-    //             note: req.body.updatedNote
-    //             }
-    //         },
-    //         // {
-    //         //     upsert: true
-    //         // }
-        
-    //     )
-    //         .then(result => {
-    //             res.json('Success')
-    //         })
-    //         .catch(error => console.error(error))
-    //   },
+    updateNote: async (req, res) => {
+        const id = req.params.id
+        try{
+            await Note.findByIdAndUpdate(id,
+                {
+                    note: req.body.updatedNote
+                })
+                res.redirect('/workspace')
+                console.log('Updated note')
+        }catch(err){
+            console.log(err)
+        }
+      },
     // Find a single note with a noteId
     
     // updateNote: async (req, res) => {
