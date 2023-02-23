@@ -59,35 +59,6 @@
 						<% } %>
 				<% }) %>    
 			</ul>
-
-			<!-- <h3>Recently Resolved</h3>
-			<ul class="workspaceNotes">
-				<% workspaceNotes.forEach( el => { %>
-					<li class='note' data-id='<%=el._id%>'>
-						<% if (el.resolved === true) { %>
-							<p><%= el.note %></p>
-							<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
-						<% } %>
-					</li>
-				<% }) %>    
-			</ul> -->
-            <!-- <ul class="workspaceNotes">
-                <% for(let i=0; i < workspaceNotes.length; i++) {%>
-                    <li class="note">
-                        <% if(workspaceNotes[i].resolved === false) {%>
-                            <p><%= workspaceNotes[i].note %>
-							</p>														
-							<span class="trash">Resolved</span>
-                        <% } %>
-						<span>Added on: <%= workspaceNotes[i].date %> by Jeremy Sanders</span> 
-                    </li>
-                <% } %>
-            </ul> -->
-			
-
-			<h5>Edit Note</h5>
-			<!-- <%=workspaceNotes._id%> -->
-			
 		</section>
 		
 		

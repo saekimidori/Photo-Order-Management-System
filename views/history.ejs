@@ -24,11 +24,7 @@
 
 		<section class="notes">
 			<h2>Notes History</h2>
-			<button id="addNote">Add new note</button>
-			<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
-				<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
-				<button>Submit</button>
-			</form>
+			<a href="/workspace">Return to Workspace</a>
 			<form action="/workspace/:id" method="GET" id="editForm" class="hidden">
 				<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
 				<button id="updateNoteBtn" type="submit">Update Note</button>
@@ -53,30 +49,6 @@
 					</li>
 				<% }) %>    
 			</ul>
-
-			<!-- <h3>Recently Resolved</h3>
-			<ul class="workspaceNotes">
-				<% workspaceNotes.forEach( el => { %>
-					<li class='note' data-id='<%=el._id%>'>
-						<% if (el.resolved === true) { %>
-							<p><%= el.note %></p>
-							<span>Added on: <%= el.date %> by Jeremy Sanders</span> 
-						<% } %>
-					</li>
-				<% }) %>    
-			</ul> -->
-            <!-- <ul class="workspaceNotes">
-                <% for(let i=0; i < workspaceNotes.length; i++) {%>
-                    <li class="note">
-                        <% if(workspaceNotes[i].resolved === false) {%>
-                            <p><%= workspaceNotes[i].note %>
-							</p>														
-							<span class="trash">Resolved</span>
-                        <% } %>
-						<span>Added on: <%= workspaceNotes[i].date %> by Jeremy Sanders</span> 
-                    </li>
-                <% } %>
-            </ul> -->
 		</section>
 
 		<script type="text/javascript" src="js/main.js"></script>

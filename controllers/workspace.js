@@ -11,19 +11,19 @@ module.exports = {
             console.log(err)
         }
     },
+    getHistory: async (req,res)=>{
+        try{
+            const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
+            res.render('history.ejs', {workspaceNotes: workspaceNotes})
+        }catch(err){
+            console.log(err)
+        }
+    },
     getEdit: async (req, res) => {
         const id = req.params.id
         try{
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
             res.render('edit.ejs', {workspaceNotes: workspaceNotes, noteId: id})
-        }catch(err){
-            console.log(err)
-        }
-    },
-    getHistory: async (req,res)=>{
-        try{
-            const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
-            res.render('history.ejs', {workspaceNotes: workspaceNotes})
         }catch(err){
             console.log(err)
         }
