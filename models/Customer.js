@@ -12,7 +12,7 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: Boolean,
+    type: Number,
     required: true,
   },
   email: {

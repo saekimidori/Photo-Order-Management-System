@@ -31,7 +31,7 @@ module.exports = {
     },
     search: async (req,res)=>{
         try{
-            const filter = req.query.unicorn // should handle lowercases
+            const filter = req.query.filter // should handle lowercases
             // console.log(filter)
             let result = await Customer.find({
                 firstName: {$eq: filter}
@@ -39,23 +39,22 @@ module.exports = {
             if (result.length === 0) {
                 result = 'none'
             }
-            // .filter(el => {
-            //     {firstName: filter}
-            //     console.log(el)
-            // })
-
-            // .filter(el => {
-            //     el.forEach()
-            //         // console.log(el)
-            //         // for (let [key, value] in el) {
-            //         //             console.log(el)
-            //         //         if (filter == el[value])
-            //         //             console.log( 'result' + el[value] )
-            //         //     }
-            // })
-                    
-            console.log(result.length)
             res.render('search-results.ejs', {filter: filter, result: result})
+        }catch(err){
+            console.log(err)
+        }
+    },
+    newCustomer: async (req, res)=>{
+        try{
+            await Customer.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                phone: req.body.phone,
+                email: req.body.email,
+                address: req.body.address
+            })
+            console.log('Customer has been added!')
+            res.redirect('/workspace')
         }catch(err){
             console.log(err)
         }
