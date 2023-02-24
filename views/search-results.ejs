@@ -28,14 +28,29 @@
 				<button tpye="submit">Submit</button> <a href="/workspace">Cancel</a>
 			</form>
 		<% } else { %>
-		<ul>
-			<% result.forEach( el => { %>
-			<li data-id='<%=el._id%>'>
-				<%= el %>
-			</li>
-			<% }) %>  
+			<table>
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Phone Number</th>
+						<th>Envelope Number</th>
+						<th>Order Number</th>
+					</tr>
+				</thead>
+				<tbody>
+				<% result.forEach( el => { %>
+					<tr data-id='<%=el._id%>'>
+						<td><a href="/customer-details" target="_blank"><%= el.firstName %></a></td>
+						<td><a href="order-details.html" target="_blank"><%= el.lastName %></a></td>
+						<td><%= el.phone %></td>
+						<td>Internet 2042520132699</td>
+						<td>Order #00000</td>
+					</tr>
+				</tbody>
+			</table>
+				<% }) %>  
 		<% } %>  
-		</ul>
 	</section>
 
 
