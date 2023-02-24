@@ -1,56 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<meta charset="utf-8">
-    	<meta name="description" content="Your description goes here">
-    	<meta name="keywords" content="one, two, three">
-
-		<title>Photo Order Management System</title>
-
-		<!-- external CSS link -->
-		<link rel="stylesheet" href="/normalize.css">
-		<link rel="stylesheet" href="/style.css">
-	</head>
-	<body>
-		<header>
-			<div class="col-2">
-				<h1>Photo Order Management System</h1>
-				<p><a href="#">User Name</a><a href="#">Logout</a></p>
-			</div>
-			<!-- date should look like this: Wednesday, June 1, 2022 9:46 AM -->
-			<span class="date"> <%= new Date().toUTCString() %></span>
-		</header>
+<%- include('partials/header') -%>
 
 
-		<section class="notes">
-			<h2>Notes History</h2>
-			<a href="/workspace">Return to Workspace</a>
-			<form action="/workspace/:id" method="GET" id="editForm" class="hidden">
-				<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
-				<button id="updateNoteBtn" type="submit">Update Note</button>
-			</form>
-			<ul class="workspaceNotes">
-				<% workspaceNotes.forEach( note => { %>
-					<% if (note.resolved === true) { %>
-					<li class='note' data-id='<%=note._id%>'>					
-						<%= note.note %>
-						Resolved
-						<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span>
-					</li>
-						<% } else { %>
-							<li class='note' data-id='<%=note._id%>'>
-							<%= note.note %>
-							<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
-								<button type="submit">Mark Resolved</button>
-							</form>
-	| <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
-							<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 							
-						<% } %>
-					</li>
-				<% }) %>    
-			</ul>
-		</section>
+<section class="notes">
+	<h2>Notes History</h2>
+	<a href="/workspace">Return to Workspace</a>
+	<form action="/workspace/:id" method="GET" id="editForm" class="hidden">
+		<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
+		<button id="updateNoteBtn" type="submit">Update Note</button>
+	</form>
+	<ul class="workspaceNotes">
+		<% workspaceNotes.forEach( note => { %>
+			<% if (note.resolved === true) { %>
+			<li class='note' data-id='<%=note._id%>'>					
+				<%= note.note %>
+				Resolved
+				<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span>
+			</li>
+				<% } else { %>
+					<li class='note' data-id='<%=note._id%>'>
+					<%= note.note %>
+					<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+						<button type="submit">Mark Resolved</button>
+					</form>
+| <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
+					<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 							
+				<% } %>
+			</li>
+		<% }) %>    
+	</ul>
+</section>
 
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
-</html>
+<%- include('partials/footer') -%>

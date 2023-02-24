@@ -1,121 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<meta charset="utf-8">
-    	<meta name="description" content="Your description goes here">
-    	<meta name="keywords" content="one, two, three">
-
-		<title>Photo Order Management System</title>
-
-		<!-- external CSS link -->
-		<link rel="stylesheet" href="/normalize.css">
-		<link rel="stylesheet" href="/style.css">
-	</head>
-	<body>
-		<header>
-			<div class="col-2">
-				<h1>Photo Order Management System</h1>
-				<p><a href="#">User Name</a><a href="#">Logout</a></p>
-			</div>
-			<!-- date should look like this: Wednesday, June 1, 2022 9:46 AM -->
-			<span class="date"> <%= new Date().toUTCString() %></span>
-		</header>
+<%- include('partials/header') -%>
 
 
-		<h4>Order Search</h4>
-		<form action="/workspace/search">
-			<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
-			<input type="search">
-			<button id="searchBtn">Search</button>
-		</form>
-		<p><a href="">Advanced Search</a> (Search by product)</p>
+<h4>Order Search</h4>
+<form action="/workspace/search">
+	<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
+	<input type="search">
+	<button id="searchBtn">Search</button>
+</form>
+<p><a href="">Advanced Search</a> (Search by product)</p>
 
-		<section class="notes">
-			<h3>Notes</h3>
-			<button id="addNote">Add new note</button>
-			<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
-				<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
-				<button>Submit</button>
-			</form>
-			
-			<ul class="workspaceNotes">
-				<% workspaceNotes.forEach( note => { %>
-					<% if (note._id == noteId) { %>
-						<form action="/workspace/update/<%=note._id%>" method="POST" id="editForm">
-							<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""><%= note.note %></textarea>
-							<button type="submit">Update Note</button> <a href="/workspace">Cancel</a>
+<section class="notes">
+	<h3>Notes</h3>
+	<button id="addNote">Add new note</button>
+	<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
+		<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
+		<button>Submit</button>
+	</form>
+	
+	<ul class="workspaceNotes">
+		<% workspaceNotes.forEach( note => { %>
+			<% if (note._id == noteId) { %>
+				<form action="/workspace/update/<%=note._id%>" method="POST" id="editForm">
+					<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""><%= note.note %></textarea>
+					<button type="submit">Update Note</button> <a href="/workspace">Cancel</a>
+				</form>
+			<% } else { %>
+			<li class='note' data-id='<%=note._id%>'>
+				<% if (note.resolved === false) { %>							
+						<%= note.note %>
+						<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+							<button type="submit">Mark Resolved</button>
 						</form>
-					<% } else { %>
-					<li class='note' data-id='<%=note._id%>'>
-						<% if (note.resolved === false) { %>							
-								<%= note.note %>
-								<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
-									<button type="submit">Mark Resolved</button>
-								</form>
-        | <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
-							<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 	
-							<% } %>						
-						</li>
-						<% } %>
-				<% }) %>    
-			</ul>
-		</section>
-		
-		
-		<section>
-			<h2>Workspace</h2>
-			<blockquote><b>Rolls Promise Time:</b> Roll Film dropped off today will be returned by Wednesday, June 08, 2022 at 5:00 PM</blockquote>
-			<table>
-				<thead>
-					<tr>
-						<th>Customer</th>
-						<th>Envelope Number</th>
-						<th>Promise Time</th>
-						<th>Type</th>
-						<th>Order Description</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<!-- Pop up a window of customer's order history and contact details -->
-						<!-- To open a link in a new window with specified size:
-						https://www.rapidtables.com/web/html/link/html-link-new-window.html#:~:text=Open%20a%20link%20in%20a%20new%20window%20with%20specified%20size -->
-						<td><a href="/customer-details" target="_blank">Stokes, Rowan</a></td>
-						<td><a href="order-details.html" target="_blank">477902</a></td>
-						<td>05/15/2022 10:27 PM</td>
-						<td>Internet 2042520132699</td>
-						<td>1HR - 1 16x20 Internet Poster</td>
-						<td><a href=#">Print Label</a></td>
-					</tr>
-					<tr>
-						<td>Gill, Kevin</td>
-						<td>477902</td>
-						<td>05/15/2022 10:27 PM</td>
-						<td>Internet 2042520132699</td>
-						<td>1HR - 1 16x20 Internet Poster</td>
-						<td>Print Label</td>
-					</tr>
-					<tr>
-						<td>Ortiz, Melissa</td>
-						<td>477902</td>
-						<td>05/15/2022 10:27 PM</td>
-						<td>Internet 2042520132699</td>
-						<td>1HR - 1 16x20 Internet Poster</td>
-						<td>Print Label</td>
-					</tr>
-					<tr>
-						<td>Bennet, Tricia</td>
-						<td>477902</td>
-						<td>05/15/2022 10:27 PM</td>
-						<td>Internet 2042520132699</td>
-						<td>1HR - 1 16x20 Internet Poster</td>
-						<td>Print Label</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
+| <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
+					<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 	
+					<% } %>						
+				</li>
+				<% } %>
+		<% }) %>    
+	</ul>
+</section>
 
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
-</html>
+
+<section>
+	<h2>Workspace</h2>
+	<blockquote><b>Rolls Promise Time:</b> Roll Film dropped off today will be returned by Wednesday, June 08, 2022 at 5:00 PM</blockquote>
+	<table>
+		<thead>
+			<tr>
+				<th>Customer</th>
+				<th>Envelope Number</th>
+				<th>Promise Time</th>
+				<th>Type</th>
+				<th>Order Description</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<!-- Pop up a window of customer's order history and contact details -->
+				<!-- To open a link in a new window with specified size:
+				https://www.rapidtables.com/web/html/link/html-link-new-window.html#:~:text=Open%20a%20link%20in%20a%20new%20window%20with%20specified%20size -->
+				<td><a href="/customer-details" target="_blank">Stokes, Rowan</a></td>
+				<td><a href="order-details.html" target="_blank">477902</a></td>
+				<td>05/15/2022 10:27 PM</td>
+				<td>Internet 2042520132699</td>
+				<td>1HR - 1 16x20 Internet Poster</td>
+				<td><a href=#">Print Label</a></td>
+			</tr>
+			<tr>
+				<td>Gill, Kevin</td>
+				<td>477902</td>
+				<td>05/15/2022 10:27 PM</td>
+				<td>Internet 2042520132699</td>
+				<td>1HR - 1 16x20 Internet Poster</td>
+				<td>Print Label</td>
+			</tr>
+			<tr>
+				<td>Ortiz, Melissa</td>
+				<td>477902</td>
+				<td>05/15/2022 10:27 PM</td>
+				<td>Internet 2042520132699</td>
+				<td>1HR - 1 16x20 Internet Poster</td>
+				<td>Print Label</td>
+			</tr>
+			<tr>
+				<td>Bennet, Tricia</td>
+				<td>477902</td>
+				<td>05/15/2022 10:27 PM</td>
+				<td>Internet 2042520132699</td>
+				<td>1HR - 1 16x20 Internet Poster</td>
+				<td>Print Label</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<%- include('partials/footer') -%>

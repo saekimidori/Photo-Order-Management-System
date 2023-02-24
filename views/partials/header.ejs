@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>Photo Order Management System</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="/normalize.css">
+		<link rel="stylesheet" href="/style.css">
+	</head>
+	<body>
+		<header>
+			<div class="col-2">
+				<h1>Photo Order Management System</h1>
+				<p><a href="#">User Name</a><a href="#">Logout</a></p>
+			</div>
+			<!-- date should look like this: Wednesday, June 1, 2022 9:46 AM -->
+			<span class="date"> <%= new Date().toUTCString() %></span>
+		</header>
+    </body>
+</html>
