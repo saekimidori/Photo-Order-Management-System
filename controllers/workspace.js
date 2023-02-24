@@ -1,4 +1,5 @@
 const Note = require('../models/Note')
+const Customer = require('../models/Customer')
 
 module.exports = {
     getWorkspace: async (req,res)=>{
@@ -30,10 +31,31 @@ module.exports = {
     },
     search: async (req,res)=>{
         try{
-            // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
-            const notes = await Note.find()
-            // const itemsLeft = await Note.countDocuments({completed: false})
-            res.render('search-results.ejs', {notes: notes})
+            const filter = req.query.unicorn // should handle lowercases
+            // console.log(filter)
+            let result = await Customer.find({
+                firstName: {$eq: filter}
+            })
+            if (result.length === 0) {
+                result = 'none'
+            }
+            // .filter(el => {
+            //     {firstName: filter}
+            //     console.log(el)
+            // })
+
+            // .filter(el => {
+            //     el.forEach()
+            //         // console.log(el)
+            //         // for (let [key, value] in el) {
+            //         //             console.log(el)
+            //         //         if (filter == el[value])
+            //         //             console.log( 'result' + el[value] )
+            //         //     }
+            // })
+                    
+            console.log(result.length)
+            res.render('search-results.ejs', {filter: filter, result: result})
         }catch(err){
             console.log(err)
         }
