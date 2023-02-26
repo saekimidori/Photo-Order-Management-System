@@ -53,6 +53,15 @@ module.exports = {
             console.log(err)
         }
     },
+    getCustomerEdit: async (req, res) => {
+        const id = req.params.id
+        try{
+            const customer = await Customer.findById(id)
+            res.render('editCustomer.ejs', {customer: customer})
+        }catch(err){
+            console.log(err)
+        }
+    },
     newCustomer: async (req, res)=>{
         try{
             await Customer.create({
@@ -104,76 +113,6 @@ module.exports = {
             console.log(err)
         }
       },
-    // Find a single note with a noteId
-    
-    // updateNote: async (req, res) => {
-    //     // Validate Request
-    //     if(!req.body.updatedNote) {
-    //         return res.status(400).send({
-    //             message: "Note content can not be empty"
-    //         });
-    //     }
-    
-    //     // Find note and update it with the request body
-    //     Note.findByIdAndUpdate(req.params.noteId, {
-    //         note: req.body.updatedNote
-    //     }, {new: true})
-    //     .then(note => {
-    //         if(!note) {
-    //             return res.status(404).send({
-    //                 message: "Note not found with id " + req.params.noteId
-    //             });
-    //         }
-    //         res.send(note);
-    //     }).catch(err => {
-    //         if(err.kind === 'ObjectId') {
-    //             return res.status(404).send({
-    //                 message: "Note not found with id " + req.params.noteId
-    //             });                
-    //         }
-    //         return res.status(500).send({
-    //             message: "Error updating note with id " + req.params.noteId
-    //         });
-    //     });
-    // },
-    // updateNote: async (req, res)=>{
-    //     // console.log(req)
-    //     console.log(req.body)
-    //     console.log(req.params)
-    //     console.log(req.body.itemFromJS)
-    //     console.log(req.body.updatedNote)
-    //     // const note = await Note.findById(req.params.id)
-
-    //     try{
-    //         await Note.findOneAndUpdate({_id: req.params.id},{
-    //             $set: {note: req.body.updatedNote}
-    //         }, 
-    //         // { new: true },
-    
-    //         // the callback function
-    //         (err, note) => {
-    //         // Handle any possible database errors
-    //             if (err) return res.status(500).send(err);
-    //             return res.send(note);
-    //         }
-    //         )
-    //         console.log('Note edited')
-    //         res.json('Note edited')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
-    // markIncomplete: async (req, res)=>{
-    //     try{
-    //         await Note.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-    //             completed: false
-    //         })
-    //         console.log('Marked Incomplete')
-    //         res.json('Marked Incomplete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
     deleteNote: async (req, res)=>{
         const id = req.params.id
         try{
@@ -183,5 +122,22 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
+    updateCustomer: async (req, res) => {
+        const id = req.params.id
+        try{
+            await Customer.findByIdAndUpdate(id,
+                {
+                    firstName: req.body.updatedFirstName,
+                    lastName: req.body.updatedLastName,
+                    phone: req.body.updatedPhone,
+                    email: req.body.updatedEmail,
+                    address: req.body.updatedAddress
+                })
+                res.redirect(`/workspace/customer/${id}`)
+                console.log('Customer updated')
+        }catch(err){
+            console.log(err)
+        }
+      },
 }    
