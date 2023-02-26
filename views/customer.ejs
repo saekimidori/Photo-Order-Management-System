@@ -1,0 +1,55 @@
+<%- include('partials/header') -%>
+
+
+<p><a href="/workspace" class="button">Return to Workspace</a></p>
+
+<h2>Customer Details</h2>
+<!-- <p>
+    <p><b>Name:</b> Stokes, Rowan</p>
+    <p><b>Phone Number:</b> (614) 215-4590</p>
+    <p><b>E-mail:</b> queenie.bruen@hotmail.com</p>
+    <p><b>Address:</b> 408 Harvey Lodge West Helena, MD 59804-7615</p>
+    <a href="" class="button">Update Customer Info</a>
+</p> -->
+<p>
+    <p><b>Name:</b> <%= customer.lastName %>, <%= customer.firstName %></p>
+    <p><b>Phone Number:</b> <%= customer.phone %></p>
+    <p><b>E-mail:</b> <%= customer.email %></p>
+    <p><b>Address:</b> <%= customer.address %></p>
+    <a href="" class="button">Update Customer Info</a>
+</p>
+
+<h2>Order History</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Envelope #</th>
+            <th>Order ID</th>
+            <th>Envelope Details</th>
+            <th>Status</th>
+            <th>Promise Time</th>
+            <th>Exceptions</th>
+            <th>Order Date</th>
+            <th>Finish Date</th>
+            <th>Sold Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>477902</td>
+            <td>2042520132699</td>
+            <td>16x20 Internet Poster</td>
+            <td>Sold</td>
+            <td>07/22/22 8:30 AM</td>
+            <td></td>
+            <td>07/21/22 8:30 AM</td>
+            <td>07/21/22 9:26 PM</td>
+            <td>07/22/22 10:09 AM</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<%- include('partials/footer') -%>

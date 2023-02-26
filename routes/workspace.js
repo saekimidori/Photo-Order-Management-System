@@ -5,6 +5,7 @@ const workspaceController = require('../controllers/workspace')
 router.get('/', workspaceController.getWorkspace)
 router.get('/history', workspaceController.getHistory)
 router.get('/search', workspaceController.search)
+router.get('/customer/:id', workspaceController.getCustomer)
 router.get('/:id', workspaceController.getEdit)
 
 router.post('/newCustomer', workspaceController.newCustomer)
