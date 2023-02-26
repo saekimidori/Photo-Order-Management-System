@@ -1,6 +1,8 @@
 <%- include('partials/header') -%>
 
 
+<p><a href="/workspace" class="button">Return to Workspace</a></p>
+
 <h2>Search</h2>
 <form action="/workspace/search">
 	<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
@@ -9,7 +11,7 @@
 </form>
 <p><a href="">Advanced Search</a> (Search by product)</p>
 
-<h2>Results</h2>
+<h2>Results for <%= filter %></h2>
 	<section>
 		<% if (result == 'none') { %>
 			<p>No customer orders found.</p>
