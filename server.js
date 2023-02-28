@@ -6,13 +6,11 @@ const bodyParser= require('body-parser')
 const homeRoutes = require('./routes/home')
 const workspaceRoutes = require('./routes/workspace')
 // const MongoClient = require('mongodb').MongoClient // imports MongoDB client
-const PORT = 5000 // port is assigned to 6000
+const PORT = 5000 // port is assigned to 5000
 const mongoose = require("mongoose");
 require('dotenv').config({path: './config/.env'}) // loads environment variables
 
 connectDB()
-
-
 
 // MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 //     .then(client => {
@@ -27,11 +25,10 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-
 //Use forms for put / delete
 app.use(methodOverride("_method"))
 
-
+// Routes
 app.use('/', homeRoutes)
 app.use('/workspace', workspaceRoutes)
 
