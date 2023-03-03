@@ -2,6 +2,7 @@
 
 
 <h4>Order Search</h4>
+<!-- search form -->
 <form action="/workspace/search">
 	<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
 	<input type="search">
@@ -11,7 +12,9 @@
 
 <section class="notes">
 	<h3>Notes</h3>
+
 	<button id="addNote">Add new note</button>
+	<!-- new note form -->
 	<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
 		<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
 		<button>Submit</button>
@@ -20,22 +23,25 @@
 	<ul class="workspaceNotes">
 		<% workspaceNotes.forEach( note => { %>
 			<% if (note._id == noteId) { %>
-				<form action="/workspace/update/<%=note._id%>" method="POST" id="editForm">
-					<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""><%= note.note %></textarea>
-					<button type="submit">Update Note</button> <a href="/workspace">Cancel</a>
-				</form>
+			<form action="/workspace/update/<%=note._id%>" method="POST" id="editForm">
+				<textarea name="updatedNote" id="" cols="" rows="7"><%= note.note %></textarea>
+				<button type="submit">Update Note</button> 
+				<a href="/workspace">Cancel</a>
+			</form>
 			<% } else { %>
-			<li class='note' data-id='<%=note._id%>'>
+				<!-- if note is unresolved, display note -->
 				<% if (note.resolved === false) { %>							
-						<%= note.note %>
-						<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
-							<button type="submit">Mark Resolved</button>
-						</form>
-| <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
+				<li class='note' data-id='<%=note._id%>'>
+					<%= note.note %>
+					<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+						<button type="submit">Mark Resolved</button>
+					</form> | 
+					<a href="/workspace/<%= note._id %>">Edit</a> | 
+					<a href="/workspace/delete/<%= note._id %>">Delete</a>
 					<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 	
-					<% } %>						
 				</li>
-				<% } %>
+				<% } %>						
+			<% } %>
 		<% }) %>    
 	</ul>
 </section>
@@ -43,7 +49,9 @@
 
 <section>
 	<h2>Workspace</h2>
+
 	<blockquote><b>Rolls Promise Time:</b> Roll Film dropped off today will be returned by Wednesday, June 08, 2022 at 5:00 PM</blockquote>
+
 	<table>
 		<thead>
 			<tr>
@@ -94,5 +102,6 @@
 		</tbody>
 	</table>
 </section>
+
 
 <%- include('partials/footer') -%>
