@@ -16,7 +16,7 @@
 		<% if (result == 'none') { %>
 			<p>No customer orders found.</p>
 			<h3>Enter new customer information</h3>
-			<form action="/workspace/newCustomer" method="POST">
+			<form action="/customer/newCustomer" method="POST">
 				<label for="firstName">First Name</label>
 				<input type="text" name="firstName">
 				<label for="lastName">Last Name</label>
@@ -43,7 +43,7 @@
 				<tbody>
 				<% result.forEach( el => { %>
 					<tr data-id='<%=el._id%>'>
-						<td><a href="/workspace/customer/<%= el._id %>"><%= el.lastName %></a></td>
+						<td><a href="/customer/<%= el._id %>"><%= el.lastName %></a></td>
 						<td><%= el.firstName %></td>
 						<td><%= el.phone %></td>
 						<td>Internet 2042520132699</td>
