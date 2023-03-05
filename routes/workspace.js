@@ -12,4 +12,6 @@ router.post('/markResolved/:id', workspaceController.markResolved)
 router.post('/update/:id', workspaceController.updateNote)
 router.get('/delete/:id', workspaceController.deleteNote)
 
+router.get('/customer/:id', workspaceController.getCustomer)
+
 module.exports = router
