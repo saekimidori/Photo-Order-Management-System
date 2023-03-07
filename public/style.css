@@ -47,7 +47,7 @@ h4 {
 }
 
 .date {
-     text-align: right; /*not aligning*/
+     text-align: right; /*not aligning -- need to wrap in div*/
 }
 
 
@@ -58,13 +58,16 @@ header {
      
 }
 
-/* these should be side by side */
-/* section, aside {
+/* 2 columns */
+.col-2 {
      display: flex;
-     flex-direction: column;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     align-items: baseline;
      justify-content: space-between;
-} */
+}
 
+/* centers content on x, y axis */
 .center {
      position: absolute;
      top: 40%;
@@ -74,35 +77,10 @@ header {
      padding: 2rem 1.5rem;
 }
 
-.col-2 {
-     display: flex;
-     justify-content: space-between;
-     align-items: baseline;
-}
-
 .date {
-     /* not aligning */
+     /* not aligning; need to wrap in div */
      text-align: right;
 }
-
-
-/*** username/logout navigation ***/
-header a {
-     text-transform: uppercase;
-     padding: 10px;
-}
-
-header a:first-child {
-     color: white;
-     background-color: #030366;
-     
-}
-
-header a:last-child {
-     color: white;
-     background-color: #6d0303;
-}
-
 
 footer {
 
@@ -111,16 +89,31 @@ footer {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+/*** user/logout navigation ***/
+header a {
+     text-transform: uppercase;
+     padding: 10px;
+}
+header a:first-child {
+     color: white;
+     background-color: #030366;
+}
+header a:last-child {
+     color: white;
+     background-color: #6d0303;
+}
+
+/*** normal links ***/
 a, a:visited {
      color: #0169ad;
      text-decoration: none;
 }
-
 a:hover {
      color: #0866f1;
      text-decoration: none;
 }
 
+/*** buttons ***/
 button,
 .button,
 .notes a {
@@ -131,7 +124,6 @@ button,
      border-radius: 3px;
      padding: 6px;
 }
-
 button:hover,
 .button:hover,
 .notes a:hover {
@@ -145,15 +137,14 @@ form.resolvedBtn {
      display: inline-block;
 }
 
+/*** tables ***/
 table {
      width: 100%;
 }
-
 thead {
      color: white;
      background-color: var(--main-accent-color);
 }
-
 tr, td {
      border: 1px solid var(--main-accent-color);
 }
@@ -161,11 +152,9 @@ tr, td {
 thead tr:hover {
      background-color: var(--main-accent-color);
 }
-
 tr:hover {
      background-color: #e5ebfa;
 }
-
 th, td {
      padding: 10px;
 }
@@ -225,15 +214,16 @@ span.delete {
      cursor: pointer;
 }
 
+/*** forms ***/
 textarea {
      width: 100%;
      margin-top: .3rem;
+}
+.hidden {
+     display: none;
 }
 
 p.history {
      text-align: right;
 }
 
-.hidden {
-     display: none;
-}

@@ -9,38 +9,8 @@
 </form>
 <p><a href="">Advanced Search</a> (Search by product)</p>
 
-<section class="notes">
-	<h3>Notes</h3>
-
-	<button id="addNote">Add new note</button>
-	<!-- new note form -->
-	<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
-		<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
-		<button>Submit</button>
-	</form>
-	
-	<ul class="workspaceNotes">
-		<% workspaceNotes.forEach( note => { %>
-			<% if (note.resolved === false) { %>							
-			<li class='note' data-id='<%=note._id%>'>
-			<!-- if note is unresolved, display the note -->
-				<%= note.note %>
-				<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
-					<button type="submit">Mark Resolved</button>
-				</form> | 
-				<a href="/workspace/<%= note._id %>">Edit</a> | 
-				<a href="/workspace/delete/<%= note._id %>">Delete</a>
-				<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span>						
-			</li>
-			<% } %>
-		<% }) %>
-	</ul>
-
-	<p class="history"><a href="/workspace/history">View all history</a></p>
-</section>
-
-
-<section>
+<div class="col-2">
+<main class="workspace">
 	<h2>Workspace</h2>
 
 	<blockquote><b>Rolls Promise Time:</b> Roll Film dropped off today will be returned by Wednesday, June 08, 2022 at 5:00 PM</blockquote>
@@ -94,7 +64,38 @@
 			</tr>
 		</tbody>
 	</table>
+</main>
+
+<section class="notes">
+	<h3>Notes</h3>
+
+	<button id="addNote">Add new note</button>
+	<!-- new note form -->
+	<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
+		<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
+		<button>Submit</button>
+	</form>
+	
+	<ul class="workspaceNotes">
+		<% workspaceNotes.forEach( note => { %>
+			<% if (note.resolved === false) { %>							
+			<li class='note' data-id='<%=note._id%>'>
+			<!-- if note is unresolved, display the note -->
+				<%= note.note %>
+				<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+					<button type="submit">Mark Resolved</button>
+				</form> | 
+				<a href="/workspace/<%= note._id %>">Edit</a> | 
+				<a href="/workspace/delete/<%= note._id %>">Delete</a>
+				<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span>						
+			</li>
+			<% } %>
+		<% }) %>
+	</ul>
+
+	<p class="history"><a href="/workspace/history">View all history</a></p>
 </section>
+</div>
 
 
 <%- include('partials/footer') -%>
