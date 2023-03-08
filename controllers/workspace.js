@@ -4,10 +4,13 @@ const Customer = require('../models/Customer')
 module.exports = {
     getWorkspace: async (req,res)=>{
         try{
-            // const workspaceNotes = await db.collection('workspaceNotes').find().toArray() // gets collection of documents and puts them into an array
+            const id = req.params.id
+            const customer = await Customer.find() // finds customers in Customer database
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
-            // const itemsLeft = await Note.countDocuments({completed: false})
-            res.render('workspace.ejs', {workspaceNotes: workspaceNotes})
+            res.render('workspace.ejs', {
+                workspaceNotes: workspaceNotes,
+                customer: customer
+            })
         }catch(err){
             console.log(err)
         }
@@ -94,7 +97,7 @@ module.exports = {
     getCustomer: async (req,res)=>{
         const id = req.params.id
         try{
-            const customer = await Customer.findById(id)
+            const customer = await Customer.find()
             res.render('customer.ejs', {customer: customer})
         }catch(err){
             console.log(err)
