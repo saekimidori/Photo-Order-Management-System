@@ -124,7 +124,7 @@ module.exports = {
                 address: req.body.address
             })
             console.log('Customer has been added!')
-            res.redirect('/customer/:id')
+            res.redirect('/workspace/customer/:id')
         }catch(err){
             console.log(err)
         }
@@ -140,7 +140,7 @@ module.exports = {
                     email: req.body.updatedEmail,
                     address: req.body.updatedAddress
                 })
-                res.redirect(`/customer/${id}`)
+                res.redirect(`/workspace/customer/${id}`)
                 console.log('Customer updated')
         }catch(err){
             console.log(err)
