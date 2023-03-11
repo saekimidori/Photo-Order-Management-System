@@ -99,6 +99,7 @@ module.exports = {
     getCustomer: async (req,res)=>{
         const id = req.params.id
         try{
+            console.log(id)
             const customer = await Customer.findById(id)
             res.render('customer.ejs', {customer: customer})
         }catch(err){
@@ -116,15 +117,16 @@ module.exports = {
     },
     newCustomer: async (req, res)=>{
         try{
-            await Customer.create({
+            const newCustomer = await Customer.create({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 phone: req.body.phone,
                 email: req.body.email,
                 address: req.body.address
             })
+            const id = newCustomer.id
             console.log('Customer has been added!')
-            res.redirect('/workspace/customer/:id')
+            res.redirect(`/workspace/customer/${id}`)
         }catch(err){
             console.log(err)
         }
