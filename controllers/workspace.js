@@ -37,8 +37,8 @@ module.exports = {
             const filter = req.query.filter // should handle lowercases
             // console.log(filter)
             let result = await Customer.find(
-                {firstName: {$eq: filter}}
-                // { type: filter } ).collation( { locale: 'en', strength: 2 }
+                {lastName: {$eq: filter}}
+                // { type: 1 } ).collation( { locale: 'en', strength: 2 }
             )
             if (result.length === 0) {
                 result = 'none'
