@@ -2,7 +2,6 @@ const mongoose = require('mongoose') // original
 // const client = mongoose(process.env.DB_STRING);
 const { MongoClient } = require("mongodb") 
 // const { MongooseClient } = require('mongoose')
-const uri = 'mongodb+srv://cchoip6:0tterHous3101@cluster0.ny8ppoe.mongodb.net/POMS?retryWrites=true&w=majority'
 const client = new MongoClient(uri)
 
 
