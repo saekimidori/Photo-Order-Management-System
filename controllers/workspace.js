@@ -37,9 +37,20 @@ module.exports = {
             const filter = req.query.filter // should handle lowercases
             // console.log(filter)
             let result = await Customer.find(
-                {lastName: {$eq: filter}}
-                // { type: 1 } ).collation( { locale: 'en', strength: 2 }
+                // {lastName: {$eq: filter}}
+            //     // { type: 1 } ).collation( { locale: 'en', strength: 2 }
+                { lastName: filter })
+                .collation({ locale: "en", strength: 2 }
             )
+            // aggregation
+            // let result = await Customer.aggregate(
+            //     [
+            //       { $group: { lastName: filter } }
+            //     ], 
+            //     { type: 1 }, {collation: { locale: "en", strength: 2 } })
+              
+            console.log(result)
+            // console.log(result.lastName)
             if (result.length === 0) {
                 result = 'none'
             }

@@ -52,6 +52,7 @@
 					</tr>
 				</thead>
 				<tbody>
+				<!-- <% for (const el of result) { %> -->
 				<% result.forEach( el => { %>
 					<tr data-id='<%=el._id%>'>
 						<td><a href="/workspace/customer/<%= el._id %>"><%= el.lastName %></a></td>
@@ -60,7 +61,9 @@
 						<td>Internet 2042520132699</td>
 						<td>Order #00000</td>
 					</tr>
+					<% console.log(el) %>
 				<% }) %>  
+				<!-- <% } %> -->
 				</tbody>
 			</table>
 		<% } %>  
