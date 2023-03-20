@@ -18,5 +18,7 @@ router.get('/customer/:id', workspaceController.getCustomer)
 router.get('/customer/:id/edit', workspaceController.getCustomerEdit)
 router.post('/newCustomer', workspaceController.newCustomer)
 router.post('/customer/update/:id', workspaceController.updateCustomer)
+router.get('/customer/:id/newOrder', workspaceController.newOrder)
+router.post('/submitOrder', workspaceController.newOrder)
 
 module.exports = router
