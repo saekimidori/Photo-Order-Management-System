@@ -3,19 +3,6 @@
 
 <p><a href="/workspace" class="button">Return to Workspace</a></p>
 
-<h2>Customer Details</h2>
-<p>
-    <p><b>Name:</b> <%= customer.lastName %>, <%= customer.firstName %></p>
-    <p><b>Phone Number:</b> <%= customer.phone %></p>
-    <p><b>E-mail:</b> <%= customer.email %></p>
-    <p><b>Address:</b> <%= customer.address %></p>
-    <a href="/workspace/customer/<%= customer._id %>/edit" class="button">Update Customer Info</a>
-</p>
-
-<p>
-    <a href="/workspace/customer/<%= customer._id %>/newOrder" class="button">Place order</a>
-</p>
-
 <h2>New Order for <%= customer.lastName %>, <%= customer.firstName %></h2>
 <table>
     <thead>
