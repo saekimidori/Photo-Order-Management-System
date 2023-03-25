@@ -107,6 +107,20 @@
 	</ul>
 
 	<p class="history"><a href="/workspace/history">View all history</a></p>
+
+	<section>
+		<h3>Administration Use Only</h3>
+		<p>Submit a new product type</p>
+		<form action="/newProduct" method="POST">
+			<label for="product">Product name</label>
+			<input type="text" name="product">
+			<label for="processTime">Processing Time</label>
+			<select name="processTime">
+				<option value="sameDay">Same Day Pickup</option>
+			  </select>
+			<button>Submit</button>
+		</form>
+	</section>
 </section>
 </div>
 
