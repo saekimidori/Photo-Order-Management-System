@@ -3,6 +3,10 @@ const mongoose = require('mongoose')
 mongoose.set("strictQuery", false);
 
 const OrderSchema = new mongoose.Schema({
+  customerId: {
+    type: String,
+    required: true,
+  },
   product: {
     type: String,
     required: true,
