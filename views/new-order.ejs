@@ -13,56 +13,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>4 x 6 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>5 x 7 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>8 x 10 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>11 x 14 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>16 x 20 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>20 x 30 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>24 x 36 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>4 x 4 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>4 x 6 Wallet Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
-        <tr>
-            <td>8 x 8 Print</td>
-            <td>Same Day Pickup</td>
-            <td><input type="number"></td>
-        </tr>
+        <% product.forEach(product => { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.processTime %></td>
+                <td><input type="number" name=""></td>
+            </tr>
+        <% }) %>
     </tbody>
 </table>
 <button>Submit</button>

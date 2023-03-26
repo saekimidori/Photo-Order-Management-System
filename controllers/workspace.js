@@ -1,6 +1,7 @@
 const Note = require('../models/Note')
 const Customer = require('../models/Customer')
 const Order = require('../models/Order')
+const Product = require('../models/Product')
 
 module.exports = {
     getWorkspace: async (req,res)=>{
@@ -163,9 +164,10 @@ module.exports = {
     newOrder: async (req,res)=>{
         const id = req.params.id
         try{
-            console.log(id)
+            console.log('customer id: ', id)
             const customer = await Customer.findById(id)
-            res.render('new-order.ejs', {customer: customer})
+            const product = await Product.find()
+            res.render('new-order.ejs', {customer: customer, product: product})
         }catch(err){
             console.log(err)
         }
@@ -179,6 +181,18 @@ module.exports = {
             })
             console.log('Order has been submitted!')
             res.redirect(`/workspace/customer/${id}/order/${id}`)
+        }catch(err){
+            console.log(err)
+        }
+    },
+    newProduct: async (req, res)=>{
+        try{
+            const newProduct = await Product.create({
+                name: req.body.product,
+                processTime: req.body.processTime
+            })
+            console.log('Product has been created!')
+            res.redirect('/workspace')
         }catch(err){
             console.log(err)
         }

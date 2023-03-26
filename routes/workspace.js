@@ -21,4 +21,7 @@ router.post('/customer/update/:id', workspaceController.updateCustomer)
 router.get('/customer/:id/newOrder', workspaceController.newOrder)
 router.post('/submitOrder', workspaceController.newOrder)
 
+// create a new product
+router.post('/newProduct', workspaceController.newProduct)
+
 module.exports = router
