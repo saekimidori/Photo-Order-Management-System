@@ -176,9 +176,17 @@ module.exports = {
         const id = req.params.id
         try{
             const newOrder = await Order.create({
-                product: req.body.product,
+                customerId: id,
+                orderId: 0,
+                envelopeNum: 0,
+                orderTime: Date.now(),
+                // promiseTime: ,
+                status: 'PROC',
+                details: req.body.product,
                 quantity: req.body.quantity
             })
+            console.log(newOrder.orderTime)
+            console.log(Date.now())
             console.log('Order has been submitted!')
             res.redirect(`/workspace/customer/${id}/order/${id}`)
         }catch(err){
