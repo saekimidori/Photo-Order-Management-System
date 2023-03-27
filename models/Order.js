@@ -15,6 +15,14 @@ const OrderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  orderTime: {
+    type: String,
+    required: true,
+  },
+  promiseTime: {
+    type: String,
+    required: true,
+  },
 })
 
 module.exports = mongoose.model('order', OrderSchema) // first argument is database name. automatically turns plural in MongoDB
