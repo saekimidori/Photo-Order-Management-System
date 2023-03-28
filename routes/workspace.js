@@ -19,7 +19,7 @@ router.get('/customer/:id/edit', workspaceController.getCustomerEdit)
 router.post('/newCustomer', workspaceController.newCustomer)
 router.post('/customer/update/:id', workspaceController.updateCustomer)
 router.get('/customer/:id/newOrder', workspaceController.newOrder)
-router.post('/submitOrder', workspaceController.submitOrder)
+router.post('/customer/:id/submitOrder', workspaceController.submitOrder)
 
 // create a new product
 router.post('/newProduct', workspaceController.newProduct)

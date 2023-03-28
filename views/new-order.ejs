@@ -13,16 +13,30 @@
         </tr>
     </thead>
     <tbody>
+        <form action="/customer/<%= customer._id %>/submitOrder" method="POST">
         <% product.forEach(product => { %>
-            <tr>
+            <!-- <tr>
                 <td><%= product.name %></td>
                 <td><%= product.processTime %></td>
                 <td><input type="number" name=""></td>
+            </tr> -->
+            <tr>
+                <td>
+                    <label for="<%= product.name %>" name="product"><%= product.name %></label>
+                </td>
+                <td>
+                    <label for="<%= product.processTime %>" name=""><%= product.processTime %></label>
+                </td>
+                <td>
+                    <input type="number" name="quantity">
+                </td>
             </tr>
-        <% }) %>
+                <% }) %>
+                <button type="submit">Submit</button>
+            </form>
     </tbody>
 </table>
-<a href="/workspace/submitOrder" class="button">Submit</a>
+<!-- <button>Submit</button> -->
 
 
 <%- include('partials/footer') -%>
