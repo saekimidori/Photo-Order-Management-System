@@ -174,13 +174,21 @@ module.exports = {
     },
     submitOrder: async (req, res)=>{
         const id = req.params.id
+        let order = {}
+        if (req.body.quantity > 0) {
+            order = {
+                product: req.body.product,
+                quantity: req.body.quantity
+            }
+        }
+        console.log(order)
         try{
             const newOrder = await Order.create({
                 customerId: id,
                 orderId: 0,
                 envelopeNum: 0,
                 orderTime: Date.now(),
-                // promiseTime: ,
+                promiseTime: Date.now(), // needs to be changed
                 status: 'PROC',
                 details: req.body.product,
                 quantity: req.body.quantity
@@ -188,7 +196,18 @@ module.exports = {
             console.log(newOrder.orderTime)
             console.log(Date.now())
             console.log('Order has been submitted!')
-            res.redirect(`/workspace/customer/${id}/order/${id}`)
+            res.redirect(`/workspace/customer/${id}`)
+            // res.redirect(`/workspace/customer/${id}/order/${id}`)
+        }catch(err){
+            console.log(err)
+        }
+    },
+    getOrder: async (req,res)=>{
+        const id = req.params.id
+        try{
+            console.log(id)
+            const order = await Order.findById(id)
+            res.render('order-details.ejs', {order: order})
         }catch(err){
             console.log(err)
         }
