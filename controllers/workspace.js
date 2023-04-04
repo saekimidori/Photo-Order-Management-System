@@ -190,8 +190,8 @@ module.exports = {
                 orderTime: Date.now(),
                 promiseTime: Date.now(), // needs to be changed
                 status: 'PROC',
-                details: req.body.product,
-                quantity: req.body.quantity
+                details: req.body.quantity,
+                // quantity: req.body.quantity
             })
             console.log(newOrder.orderTime)
             console.log(Date.now())
