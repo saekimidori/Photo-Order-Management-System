@@ -183,17 +183,27 @@ module.exports = {
         }
         console.log(order)
         try{
+            function newEnvelope() {
+                let envelopeNum = Math.floor(Math.random()*999999)
+                if (Order.find({envelopeNum: envelopeNum})) {
+                    console.log(envelopeNum)
+                    newEnvelope() // infinite loop
+                    console.log(envelopeNum)
+                } else {
+                    return envelopeNum
+                }
+            }
             const newOrder = await Order.create({
                 customerId: id,
                 orderId: 0,
-                envelopeNum: 0,
+                envelopeNum: newEnvelope(),
                 orderTime: Date.now(),
                 promiseTime: Date.now(), // needs to be changed
                 status: 'PROC',
                 details: req.body.quantity,
                 // quantity: req.body.quantity
             })
-            console.log(newOrder.orderTime)
+            console.log(newOrder)
             console.log(Date.now())
             console.log('Order has been submitted!')
             res.redirect(`/workspace/customer/${id}`)
