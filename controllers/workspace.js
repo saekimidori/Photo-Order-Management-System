@@ -173,7 +173,7 @@ module.exports = {
         }
     },
     submitOrder: async (req, res)=>{
-        const id = req.params.id
+        const customerId = req.params.id
         let order = {}
         if (req.body.quantity > 0) {
             order = {
@@ -183,18 +183,22 @@ module.exports = {
         }
         console.log(order)
         try{
+            // let product = Product.product
             function newEnvelope() {
                 let envelopeNum = Math.floor(Math.random()*999999)
                 if (Order.find({envelopeNum: envelopeNum})) {
-                    console.log(envelopeNum)
-                    newEnvelope() // infinite loop
-                    console.log(envelopeNum)
+                    console.log('envelope match')
+                    // console.log(envelopeNum)
+                    // newEnvelope() // infinite loop
+                    return envelopeNum
+                    // console.log(envelopeNum)
                 } else {
+                    console.log('no envelope match')
                     return envelopeNum
                 }
             }
             const newOrder = await Order.create({
-                customerId: id,
+                customerId: customerId,
                 orderId: 0,
                 envelopeNum: newEnvelope(),
                 orderTime: Date.now(),
@@ -203,10 +207,11 @@ module.exports = {
                 details: req.body.quantity,
                 // quantity: req.body.quantity
             })
+            const orderId = newOrder.id
             console.log(newOrder)
             console.log(Date.now())
             console.log('Order has been submitted!')
-            res.redirect(`/workspace/customer/${id}`)
+            res.redirect(`/workspace/customer/${orderId}`)
             // res.redirect(`/workspace/customer/${id}/order/${id}`)
         }catch(err){
             console.log(err)
