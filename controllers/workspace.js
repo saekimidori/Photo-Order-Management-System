@@ -209,9 +209,9 @@ module.exports = {
             })
             const orderId = newOrder.id
             console.log(newOrder)
-            console.log(Date.now())
+            // console.log(Date.now())
             console.log('Order has been submitted!')
-            res.redirect(`/workspace/customer/${orderId}`)
+            res.redirect(`/workspace/getOrder/${orderId}`)
             // res.redirect(`/workspace/customer/${id}/order/${id}`)
         }catch(err){
             console.log(err)
@@ -219,10 +219,14 @@ module.exports = {
     },
     getOrder: async (req,res)=>{
         const id = req.params.id
+        console.log('order id: ' + id)
+        const order = await Order.findById(id)
+        const customerId = order.customerId
+        console.log('customer id: ' + customerId)
+        const customer = await Customer.findById(customerId)
+        console.log(customer)
         try{
-            console.log(id)
-            const order = await Order.findById(id)
-            res.render('order-details.ejs', {order: order})
+            res.render('order-details.ejs', {order: order, customer: customer})
         }catch(err){
             console.log(err)
         }
