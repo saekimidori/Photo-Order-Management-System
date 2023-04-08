@@ -235,7 +235,8 @@ module.exports = {
         try{
             const newProduct = await Product.create({
                 name: req.body.product,
-                processTime: req.body.processTime
+                processTime: req.body.processTime,
+                price: req.body.price,
             })
             console.log('Product has been created!')
             res.redirect('/workspace')
