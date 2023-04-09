@@ -111,10 +111,11 @@ module.exports = {
     // ideally, this should not be here
     getCustomer: async (req,res)=>{
         const id = req.params.id
+        const order = await Order.find({customerId: id})
         try{
             console.log(id)
             const customer = await Customer.findById(id)
-            res.render('customer.ejs', {customer: customer})
+            res.render('customer.ejs', {customer: customer, order: order})
         }catch(err){
             console.log(err)
         }
