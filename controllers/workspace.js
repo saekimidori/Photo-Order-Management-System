@@ -165,7 +165,6 @@ module.exports = {
     newOrder: async (req,res)=>{
         const id = req.params.id
         try{
-            console.log('customer id: ', id)
             const customer = await Customer.findById(id)
             const product = await Product.find()
             res.render('new-order.ejs', {customer: customer, product: product})
@@ -175,6 +174,7 @@ module.exports = {
     },
     submitOrder: async (req, res)=>{
         const customerId = req.params.id
+        console.log(req.body.product)
         let order = {}
         if (req.body.quantity > 0) {
             order = {
@@ -182,9 +182,10 @@ module.exports = {
                 quantity: req.body.quantity
             }
         }
-        console.log(order)
+        console.log('order: ' + order)
         try{
             // let product = Product.product
+            // function to generate new envelope number
             function newEnvelope() {
                 let envelopeNum = Math.floor(Math.random()*999999)
                 if (Order.find({envelopeNum: envelopeNum})) {
@@ -210,22 +211,17 @@ module.exports = {
             })
             const orderId = newOrder.id
             console.log(newOrder)
-            // console.log(Date.now())
             console.log('Order has been submitted!')
             res.redirect(`/workspace/getOrder/${orderId}`)
-            // res.redirect(`/workspace/customer/${id}/order/${id}`)
         }catch(err){
             console.log(err)
         }
     },
     getOrder: async (req,res)=>{
         const id = req.params.id
-        console.log('order id: ' + id)
         const order = await Order.findById(id)
         const customerId = order.customerId
-        console.log('customer id: ' + customerId)
         const customer = await Customer.findById(customerId)
-        console.log(customer)
         try{
             res.render('order-details.ejs', {order: order, customer: customer})
         }catch(err){
