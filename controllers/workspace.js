@@ -3,6 +3,11 @@ const Customer = require('../models/Customer')
 const Order = require('../models/Order')
 const Product = require('../models/Product')
 
+// function to convert date to m/d/yyyy, h:mm:ss AM in America/New York time zone
+const formatDate = date => {
+    date.toLocaleString('en-US', { timeZone: 'America New_York'})
+    }
+
 module.exports = {
     getWorkspace: async (req,res)=>{
         try{
