@@ -33,7 +33,7 @@
                 <%= order.status %>
             </td>
             <td>
-                <%= order.promiseTime %>
+                <%= order.promiseTime.toLocaleString('en-US', { timeZone: 'America/New_York'}) %>
             </td>
             <td>
                 <!-- retail price -->
