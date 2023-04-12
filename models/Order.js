@@ -43,6 +43,14 @@ const OrderSchema = new mongoose.Schema({
   //   type: String,
   //   required: true,
   // },
+  price: {
+    type: Number,
+    required: true,
+  },
+  pricePaid: {
+    type: Number,
+    required: false,
+  },
 })
 
 module.exports = mongoose.model('order', OrderSchema) // first argument is database name. automatically turns plural in MongoDB
