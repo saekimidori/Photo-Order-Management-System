@@ -36,7 +36,7 @@ const OrderSchema = new mongoose.Schema({
     required: true,
   },
   details: {
-    type: Array,
+    type: Object,
     required: true,
   },
   // quantity: {
@@ -45,7 +45,7 @@ const OrderSchema = new mongoose.Schema({
   // },
   price: {
     type: Number,
-    required: true,
+    required: false, //true
   },
   pricePaid: {
     type: Number,
