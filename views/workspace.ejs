@@ -29,7 +29,7 @@
 		<tbody>
 			<% order.forEach(order => { %>
 			<tr data-id='<%= order._id %>'>
-				<td><a href="/workspace/customer/<%= order._id %>"><%= customer.lastName %>, <%= order.customerId %></a></td>
+				<td><a href="/workspace/customer/<%= order.customerId %>"><%= customer.lastName %>, <%= order.customerId %></a></td>
 				<td><a href="/workspace/getOrder/<%= order._id %>"><%= order.envelopeNum %></a></td>
 				<td></td>
 				<td></td>
