@@ -11,12 +11,18 @@ const formatDate = date => {
 module.exports = {
     getWorkspace: async (req,res)=>{
         try{
-            const id = req.params.id
-            const customer = await Customer.find() // finds customers in Customer database
+            // const id = req.params.id
+            const order = await Order.find({status: 'PROC'}) // finds orders in Order database that are in PROCESSING status
+            const customerId = order.customerId
+            console.log(customerId)
+            const customer = await Customer.find({id: customerId})
+            console.log(customer)
+            // const customer = await Customer.find() // finds customers in Customer database
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
             res.render('workspace.ejs', {
+                order: order,
+                customer: customer,
                 workspaceNotes: workspaceNotes,
-                customer: customer
             })
         }catch(err){
             console.log(err)
@@ -194,6 +200,7 @@ module.exports = {
             function newEnvelope() {
                 let envelopeNum = Math.floor(Math.random()*999999)
                 if (Order.find({envelopeNum: envelopeNum})) {
+                    console.log(envelopeNum)
                     console.log('envelope match')
                     // console.log(envelopeNum)
                     // newEnvelope() // infinite loop
@@ -211,7 +218,9 @@ module.exports = {
                 orderTime: Date.now(),
                 promiseTime: Date.now(), // needs to be changed
                 status: 'PROC',
-                details: req.body.quantity,
+                details: {
+                    product: req.body.quantity
+                },
                 // quantity: req.body.quantity
             })
             const orderId = newOrder.id
