@@ -11,14 +11,14 @@ const formatDate = date => {
 module.exports = {
     getWorkspace: async (req,res)=>{
         try{
-            // const id = req.params.id
             const order = await Order.find({status: 'PROC'}) // finds orders in Order database that are in PROCESSING status
+
             const customerId = order.customerId
-            
             console.log('customerId: ' + customerId)
             const customer = await Customer.find({id: customerId})
             // console.log(customer)
             // const customer = await Customer.find() // finds customers in Customer database
+            
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
             res.render('workspace.ejs', {
                 order: order,
