@@ -14,7 +14,7 @@
 <h2>Results for <%= filter %></h2>
 	<section>
 		<!-- if no results are found, display form to add new customer -->
-		<% if (result == 'none') { %>
+		<% if (result == null) { %>
 			<p>No customer orders found.</p>
 			<h3>Enter new customer information</h3>
 			<form action="/workspace/newCustomer" method="POST">
@@ -53,8 +53,8 @@
 				</thead>
 				<tbody>
 				<!-- <% for (const el of result) { %> -->
-				<% result.forEach( el => { %>
-					<tr data-id='<%=el._id%>'>
+					<% result.forEach( el => { %>
+						<tr data-id='<%=el._id%>'>
 						<td><a href="/workspace/customer/<%= el._id %>"><%= el.lastName %></a></td>
 						<td><%= el.firstName %></td>
 						<td><%= el.phone %></td>

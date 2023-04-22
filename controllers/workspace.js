@@ -73,7 +73,7 @@ module.exports = {
             console.log(result)
             // console.log(result.lastName)
             if (result.length === 0) {
-                result = 'none'
+                result = null
             }
             res.render('search-results.ejs', {filter: filter, result: result})
         }catch(err){
