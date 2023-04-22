@@ -39,9 +39,16 @@ module.exports = {
     },
     getEdit: async (req, res) => {
         const id = req.params.id
+        const order = await Order.find({status: 'PROC'}) // finds orders in Order database that are in PROCESSING status
+        const customerId = order.customerId
+        const customer = await Customer.find({id: customerId})
         try{
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
-            res.render('edit.ejs', {workspaceNotes: workspaceNotes, noteId: id})
+            res.render('edit.ejs', {
+                order: order,
+                customer: customer,
+                workspaceNotes: workspaceNotes,
+                noteId: id})
         }catch(err){
             console.log(err)
         }
