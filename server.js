@@ -3,6 +3,23 @@ const express = require('express') // imports express
 const app = express() // assigns express to app variable
 const PORT = 5000 // port is assigned to 5000
 const mongoose = require("mongoose")
+const passport = require('passport') // imports passport for authentication
+const LocalStrategy = require('passport-local');
+
+const strategy = new LocalStrategy(function verify(username, password, cb) {
+  db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, user) {
+    if (err) { return cb(err); }
+    if (!user) { return cb(null, false, { message: 'Incorrect username or password.' }); }
+
+    crypto.pbkdf2(password, user.salt, 310000, 32, 'sha256', function(err, hashedPassword) {
+      if (err) { return cb(err); }
+      if (!crypto.timingSafeEqual(user.hashed_password, hashedPassword)) {
+        return cb(null, false, { message: 'Incorrect username or password.' });
+      }
+      return cb(null, user);
+    });
+  });
+});
 
 // imports functions/routes
 const connectDB = require('./config/database')
@@ -30,9 +47,18 @@ connectDB()
 //         db = client.db(dbName) 
 //     })
 
+// registers passport strategy
+passport.use(strategy)
+
 // middleware
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+// passport authenticates request
+app.post('/login/password',
+  passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }),
+  function(req, res) {
+    res.redirect('/~' + req.user.username);
+  });
 
 // required to properly parse form POST requests - sending data
 app.use(express.urlencoded({ extended: true }))
