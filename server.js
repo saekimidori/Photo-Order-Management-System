@@ -5,6 +5,7 @@ const PORT = 5000 // port is assigned to 5000
 const mongoose = require("mongoose")
 const passport = require('passport') // imports passport for authentication
 const LocalStrategy = require('passport-local');
+const session = require('express-session');
 
 const strategy = new LocalStrategy(function verify(username, password, cb) {
   db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, user) {
@@ -59,6 +60,28 @@ app.post('/login/password',
   function(req, res) {
     res.redirect('/~' + req.user.username);
   });
+// supports user sessions
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true }
+  }));
+// maintains login sessions via serialize, deserialize
+passport.serializeUser(function(user, cb) {
+    process.nextTick(function() {
+      return cb(null, {
+        id: user.id,
+        username: user.username,
+        picture: user.picture
+      });
+    });
+});
+passport.deserializeUser(function(user, cb) {
+    process.nextTick(function() {
+      return cb(null, user);
+    });
+});
 
 // required to properly parse form POST requests - sending data
 app.use(express.urlencoded({ extended: true }))
