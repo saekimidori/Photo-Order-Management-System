@@ -6,6 +6,7 @@ const mongoose = require("mongoose")
 const passport = require('passport') // imports passport for authentication
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
+const crypto = require('crypto');
 
 const strategy = new LocalStrategy(function verify(username, password, cb) {
   db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, user) {
@@ -96,6 +97,17 @@ app.use(methodOverride("_method"))
 // Routes
 app.use('/', homeRoutes)
 app.use('/workspace', workspaceRoutes)
+// renders login page to authenticate user
+app.get('/login',
+  function(req, res, next) {
+    res.render('login');
+  });
+// authenticates user
+app.post('/login/password',
+  passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }),
+  function(req, res) {
+    res.redirect('/~' + req.user.username);
+  });
 
 // start server
 app.listen(process.env.PORT || PORT, ()=>{ // server tries to load on environment variable first; if not, then it will load on assigned port above (|| PORT)
