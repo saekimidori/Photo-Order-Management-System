@@ -13,6 +13,11 @@ const UserSchema = new mongoose.Schema({
     minlength: 8,
     required: true,
   },
+  role: {
+    type: String,
+    default: 'Basic',
+    required: true,
+  }
 })
 
 module.exports = mongoose.model('product', UserSchema) // first argument is database name. automatically turns plural in MongoDB
