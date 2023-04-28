@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
         }
     } catch {
         res.status(400).json({
-            message: 'An errorr has occurred',
+            message: 'An error has occurred',
             error: error.message,
         })
     }
