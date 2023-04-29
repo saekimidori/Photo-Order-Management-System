@@ -23,6 +23,7 @@ exports.register = async (req, res, next) => {
             error: error.message
         })
     }
+    }
 }
 
 exports.login = async (req, res, next) => {
