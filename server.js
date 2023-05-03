@@ -101,21 +101,6 @@ app.use(flash())
 //     saveUninitialized: false,
 //     cookie: { secure: true }
 //   }));
-// // maintains login sessions via serialize, deserialize
-// passport.serializeUser(function(user, cb) {
-//     process.nextTick(function() {
-//       return cb(null, {
-//         id: user.id,
-//         username: user.username,
-//         picture: user.picture
-//       });
-//     });
-// });
-// passport.deserializeUser(function(user, cb) {
-//     process.nextTick(function() {
-//       return cb(null, user);
-//     });
-// });
 
 // // renders login page to authenticate user
 // app.get('/login',
