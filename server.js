@@ -5,7 +5,7 @@ const PORT = 5000 // port is assigned to 5000
 const mongoose = require("mongoose") // imports mongoose
 const passport = require('passport') // imports passport for authentication
 const session = require('express-session') // allows for user sessions
-const MongoStore = require('connect-mongo')(session) // stores user sessions in the database
+const MongoStore = require('connect-mongo') // stores user sessions in the database
 const flash = require('express-flash') // shows error messages for validation during authentication
 const logger = require('morgan') // logs error messages during authentication
 // const LocalStrategy = require('passport-local');
@@ -78,7 +78,7 @@ app.use(
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
     })
   )
 
