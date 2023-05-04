@@ -20,4 +20,4 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('product', UserSchema) // first argument is database name. automatically turns plural in MongoDB
+module.exports = mongoose.model('user', UserSchema) // first argument is database name. automatically turns plural in MongoDB
