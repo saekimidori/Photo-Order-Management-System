@@ -13,9 +13,12 @@ exports.getLogin = (req, res) => {
 
 exports.postLogin = (req, res, next) => {
     const validationErrors = []
+    // checks if username field is empty
     if (validator.isEmpty(req.body.username)) validationErrors.push({ msg: 'Please enter a valid username.' })
+    // checks if password field is empty
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
-  
+
+    // displays login errors if any, redirects to login page
     if (validationErrors.length) {
       req.flash('errors', validationErrors)
       return res.redirect('/login')
@@ -57,23 +60,30 @@ exports.postLogin = (req, res, next) => {
   
   exports.postSignup = (req, res, next) => {
     const validationErrors = []
+    // checks if username field is empty
     if (validator.isEmpty(req.body.username)) validationErrors.push({ msg: 'Please enter a valid username.' })
+    // checks if password has minimum required length
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
+    // checks if passwords match
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
   
+    // displays sign up errors if any, redirects to sign up page
     if (validationErrors.length) {
       req.flash('errors', validationErrors)
       return res.redirect('../signup')
     }
   
+    // creates new user
     const user = new User({
       username: req.body.username,
       password: req.body.password
     })
   
+    // finds if username already exists in database
     User.findOne({userName: req.body.userName}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
+        // displays error if username exists
         req.flash('errors', { msg: 'Username already exists.' })
         return res.redirect('../signup')
       }
