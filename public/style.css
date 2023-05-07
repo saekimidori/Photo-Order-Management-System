@@ -69,9 +69,11 @@ header {
 
 /* centers content on x, y axis */
 .center {
-     position: absolute;
+     margin: auto;
+     width: 25%;
+     /* position: absolute;
      top: 40%;
-     left: 40%;
+     left: 40%; */
      background-color: #d6ecfa;
      border-radius: 10px;
      padding: 2rem 1.5rem;
