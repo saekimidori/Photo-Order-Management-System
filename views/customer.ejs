@@ -36,8 +36,8 @@
         </tr>
     </thead>
     <tbody>
+        <% let num = 1 %>
         <% order.forEach(order => { %>
-            <% let num = 1 %>
             <tr>
                 <td><%= num %></td>
                 <td><a href="/workspace/getOrder/<%= order._id %>"><%= order.envelopeNum %></a></td>
