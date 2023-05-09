@@ -12,10 +12,21 @@ module.exports = {
     getWorkspace: async (req,res)=>{
         try{
             const order = await Order.find({status: 'PROC'}) // finds orders in Order database that are in PROCESSING status
+            // console.log(order) // array of objects
 
-            const customerId = order.customerId
-            console.log('customerId: ' + customerId)
-            const customer = await Customer.find({id: customerId})
+            const customerId = order.forEach(order => Customer.find({id: order.customerId}))
+            console.log(customerId)
+
+            // let customerIds = []
+            // order.forEach(order => customerIds.push(order.customerId))
+            // console.log(customerIds)
+
+            // const whackamole = order.forEach(order => order.customerId)
+            // console.log(whackamole)
+
+            // const customerId = order.customerId
+            // console.log('customerId: ' + customerId)
+            const customer = await Customer.find({id: order.customerId})
             // console.log(customer)
             // const customer = await Customer.find() // finds customers in Customer database
             
@@ -69,9 +80,9 @@ module.exports = {
             //       { $group: { lastName: filter } }
             //     ], 
             //     { type: 1 }, {collation: { locale: "en", strength: 2 } })
-              
             console.log(result)
             // console.log(result.lastName)
+
             if (result.length === 0) {
                 result = null
             }
