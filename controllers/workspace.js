@@ -14,7 +14,7 @@ module.exports = {
             const order = await Order.find({status: 'PROC'}) // finds orders in Order database that are in PROCESSING status
             // console.log(order) // array of objects
 
-            const customerId = order.forEach(order => Customer.find({id: order.customerId}))
+            const customerId = order.map(order => order.customerId)
             console.log(customerId)
 
             // let customerIds = []
@@ -26,8 +26,9 @@ module.exports = {
 
             // const customerId = order.customerId
             // console.log('customerId: ' + customerId)
-            const customer = await Customer.find({id: order.customerId})
-            // console.log(customer)
+            const customer = []
+            customerId.forEach(id => customer.push(Customer.findById(id)))
+            console.log(customer)
             // const customer = await Customer.find() // finds customers in Customer database
             
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
@@ -204,17 +205,19 @@ module.exports = {
     submitOrder: async (req, res)=>{
         const customerId = req.params.id
         console.log('customerId: ' + customerId)
+
         console.log(req.body.product)
-        let order = {}
-        if (req.body.quantity > 0) {
-            order = {
-                product: req.body.product,
-                quantity: req.body.quantity
-            }
-        }
-        console.log('order: ' + order)
+        // let order = {}
+        // if (req.body.quantity > 0) {
+        //     order = {
+        //         product: req.body.product,
+        //         quantity: req.body.quantity
+        //     }
+        // }
+        // console.log('order: ' + order)
         try{
             // let product = Product.product
+
             // function to generate new envelope number
             function newEnvelope() {
                 let envelopeNum = Math.floor(Math.random()*999999)
@@ -230,10 +233,11 @@ module.exports = {
                     return envelopeNum
                 }
             }
-            const customer = Customer.findById(customerId)
+
+            const customer = await Customer.findById(customerId)
             console.log(customer)
             const newOrder = await Order.create({
-                // customer: customer,
+                customer: customer,
                 orderId: 0,
                 envelopeNum: newEnvelope(),
                 orderTime: Date.now(),
