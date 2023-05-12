@@ -236,6 +236,7 @@ module.exports = {
 
             const customer = await Customer.findById(customerId)
             console.log(customer)
+            // creates new order in database
             const newOrder = await Order.create({
                 customer: customer,
                 orderId: 0,
