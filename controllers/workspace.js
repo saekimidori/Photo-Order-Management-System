@@ -11,30 +11,12 @@ const formatDate = date => {
 module.exports = {
     getWorkspace: async (req,res)=>{
         try{
-            const order = await Order.find({status: 'PROC'}) // finds orders in Order database that are in PROCESSING status
+            const order = await Order.find({status: 'PROC'}).sort({ orderTime: 'desc' }).lean() // finds orders in Order database that are in PROCESSING status
             // console.log(order) // array of objects
-
-            const customerId = order.map(order => order.customerId)
-            console.log(customerId)
-
-            // let customerIds = []
-            // order.forEach(order => customerIds.push(order.customerId))
-            // console.log(customerIds)
-
-            // const whackamole = order.forEach(order => order.customerId)
-            // console.log(whackamole)
-
-            // const customerId = order.customerId
-            // console.log('customerId: ' + customerId)
-            const customer = []
-            customerId.forEach(id => customer.push(Customer.findById(id)))
-            console.log(customer)
-            // const customer = await Customer.find() // finds customers in Customer database
             
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
             res.render('workspace.ejs', {
                 order: order,
-                customer: customer,
                 workspaceNotes: workspaceNotes,
             })
         }catch(err){

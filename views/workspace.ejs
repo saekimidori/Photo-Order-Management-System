@@ -29,7 +29,7 @@
 		<tbody>
 			<% order.forEach(order => { %>
 			<tr data-id='<%= order._id %>'>
-				<td><a href="/workspace/customer/<%= order.customerId %>"><%= customer.lastName %>, <%= order.customerId %></a></td>
+				<td><a href="/workspace/customer/<%= order._id %>"><%= order.customer.lastName %>, <%= order.customer.firstName %></a></td>
 				<td><a href="/workspace/getOrder/<%= order._id %>"><%= order.envelopeNum %></a></td>
 				<td></td>
 				<td></td>
@@ -37,18 +37,8 @@
 				<td><a href="#">Print Label</a></td>
 			</tr>
 			<% }) %>
-			<!-- displays all customers -->
-			<!-- <% customer.forEach( el => { %>
-			<tr data-id='<%= el._id %>'>
-				<td><a href="/workspace/customer/<%= el._id %>"><%= el.lastName %>, <%= el.firstName %></a></td>
-				<td><a href="/workspace/getOrder/<%= el._id %>">477902</a></td>
-				<td>05/15/2022 10:27 PM</td>
-				<td>Internet 2042520132699</td>
-				<td>1HR - 1 16x20 Internet Poster</td>
-				<td><a href="#">Print Label</a></td>
-
-			</tr>
-			<% }) %> -->
+			
+			
 			<tr>
 				<!-- Pop up a window of customer's order history and contact details -->
 				<!-- To open a link in a new window with specified size:
