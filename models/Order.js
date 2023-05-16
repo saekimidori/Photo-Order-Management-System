@@ -13,6 +13,7 @@ const OrderSchema = new mongoose.Schema({
   },
   envelopeNum: {
     type: Number,
+    minlength: 6,
     required: false,
   },
   orderTime: {
