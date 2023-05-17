@@ -10,78 +10,10 @@
 <p><a href="">Advanced Search</a> (Search by product)</p>
 
 <div class="col-2">
-<main class="workspace">
-	<h2>Workspace</h2>
-
-	<blockquote><b>Rolls Promise Time:</b> Roll Film dropped off today will be returned by Wednesday, June 08, 2022 at 5:00 PM</blockquote>
-
-	<table>
-		<thead>
-			<tr>
-				<th>Customer</th>
-				<th>Envelope Number</th>
-				<th>Promise Time</th>
-				<th>Type</th>
-				<th>Order Description</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% order.forEach(order => { %>
-			<tr data-id='<%= order._id %>'>
-				<td><a href="/workspace/customer/<%= order.customer._id %>"><%= order.customer.lastName %>, <%= order.customer.firstName %></a></td>
-				<td><a href="/workspace/getOrder/<%= order._id %>"><%= order.envelopeNum %></a></td>
-				<td></td>
-				<td></td>
-				<td><%= order.details %></td>
-				<td><a href="#">Print Label</a></td>
-			</tr>
-			<% }) %>
-			
-			
-			<tr>
-				<!-- Pop up a window of customer's order history and contact details -->
-				<!-- To open a link in a new window with specified size:
-				https://www.rapidtables.com/web/html/link/html-link-new-window.html#:~:text=Open%20a%20link%20in%20a%20new%20window%20with%20specified%20size -->
-				<td><a href="/customer-details" target="_blank">Stokes, Rowan</a></td>
-				<td><a href="order-details.html" target="_blank">477902</a></td>
-				<td>05/15/2022 10:27 PM</td>
-				<td>Internet 2042520132699</td>
-				<td>1HR - 1 16x20 Internet Poster</td>
-				<td><a href=#">Print Label</a></td>
-			</tr>
-			
-			<tr>
-				<td>Gill, Kevin</td>
-				<td>477902</td>
-				<td>05/15/2022 10:27 PM</td>
-				<td>Internet 2042520132699</td>
-				<td>1HR - 1 16x20 Internet Poster</td>
-				<td>Print Label</td>
-			</tr>
-			<tr>
-				<td>Ortiz, Melissa</td>
-				<td>477902</td>
-				<td>05/15/2022 10:27 PM</td>
-				<td>Internet 2042520132699</td>
-				<td>1HR - 1 16x20 Internet Poster</td>
-				<td>Print Label</td>
-			</tr>
-			<tr>
-				<td>Bennet, Tricia</td>
-				<td>477902</td>
-				<td>05/15/2022 10:27 PM</td>
-				<td>Internet 2042520132699</td>
-				<td>1HR - 1 16x20 Internet Poster</td>
-				<td>Print Label</td>
-			</tr>
-			
-		</tbody>
-	</table>
-</main>
+	<%- include('partials/workspace') -%>
 
 <section>
-<%- include('partials/notes') -%>
+	<%- include('partials/notes') -%>
 
 	<section>
 		<h3>Administration Use Only</h3>
