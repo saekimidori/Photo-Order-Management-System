@@ -12,25 +12,25 @@
 <div class="col-2">
 	<%- include('partials/workspace') -%>
 
-<section>
-	<%- include('partials/notes') -%>
+	<section class="notes">
+		<%- include('partials/notes') -%>
 
-	<section>
-		<h3>Administration Use Only</h3>
-		<p>Submit a new product type</p>
-		<form action="/workspace/newProduct" method="POST">
-			<label for="product">Product name</label>
-			<input type="text" name="product">
-			<label for="processTime">Processing Time</label>
-			<select name="processTime">
-				<option value="Same Day Pickup">Same Day Pickup</option>
-			  </select>
-			<label for="price">Price</label>
-			<input type="number" name="price">
-			<button>Submit</button>
-		</form>
+		<section>
+			<h3>Administration Use Only</h3>
+			<p>Submit a new product type</p>
+			<form action="/workspace/newProduct" method="POST">
+				<label for="product">Product name</label>
+				<input type="text" name="product">
+				<label for="processTime">Processing Time</label>
+				<select name="processTime">
+					<option value="Same Day Pickup">Same Day Pickup</option>
+				</select>
+				<label for="price">Price</label>
+				<input type="number" name="price">
+				<button>Submit</button>
+			</form>
+		</section>
 	</section>
-</section>
 </div>
 
 
