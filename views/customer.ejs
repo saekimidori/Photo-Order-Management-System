@@ -13,7 +13,7 @@
 </p>
 
 <p>
-    <a href="/customer/<%= customer._id %>/newOrder" class="button">Place order</a>
+    <a href="/order/<%= customer._id %>/newOrder" class="button">Place order</a>
 </p>
 
 <h2>Order History</h2>
@@ -40,7 +40,7 @@
         <% order.forEach(order => { %>
             <tr>
                 <td><%= num %></td>
-                <td><a href="/workspace/getOrder/<%= order._id %>"><%= order.envelopeNum %></a></td>
+                <td><a href="/order/<%= order._id %>"><%= order.envelopeNum %></a></td>
                 <td><%= order.orderId %></td>
                 <td><%= order.details %></td>
                 <td><%= order.status %></td>

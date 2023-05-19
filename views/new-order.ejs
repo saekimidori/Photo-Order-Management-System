@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <form action="/workspace/customer/<%= customer._id %>/submitOrder" method="POST">
+        <form action="/order/<%= customer._id %>/submitOrder" method="POST">
         <% product.forEach(product => { %>
             <!-- <tr>
                 <td><%= product.name %></td>
@@ -22,7 +22,7 @@
             </tr> -->
             <tr data-id='<%=product._id%>'>
                 <td>
-                    <label for="<%= product.name %>" name="product"><%= product.name %></label>
+                    <label for="<%= product.name %>" name="product" value="<%= product.name %>"><%= product.name %></label>
                 </td>
                 <td>
                     <label for="<%= product.processTime %>" name="processTime"><%= product.processTime %></label>
@@ -31,7 +31,7 @@
                     <input type="number" name="quantity" value=0>
                 </td>
             </tr>
-                <% }) %>
+        <% }) %>
                 <button type="submit">Place Order</button>
             </form>
     </tbody>

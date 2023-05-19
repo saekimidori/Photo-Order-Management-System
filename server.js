@@ -31,6 +31,7 @@ const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const workspaceRoutes = require('./routes/workspace')
 const customerRoutes = require('./routes/customer')
+const orderRoutes = require('./routes/order')
 
 const methodOverride = require("method-override")
 const bodyParser= require('body-parser')
@@ -119,6 +120,7 @@ app.use(flash())
 app.use('/', homeRoutes)
 app.use('/workspace', workspaceRoutes)
 app.use('/customer', customerRoutes)
+app.use('/order', orderRoutes)
 
 // start server
 app.listen(process.env.PORT || PORT, ()=>{ // server tries to load on environment variable first; if not, then it will load on assigned port above (|| PORT)
