@@ -1,11 +1,15 @@
 const Customer = require('../models/Customer')
+const Order = require('../models/Order')
+const Product = require('../models/Product')
 
 module.exports = {
     getCustomer: async (req,res)=>{
         const id = req.params.id
+        console.log(id)
+        const customer = await Customer.findById(id)
+        const order = await Order.find({customer: customer}).sort({orderTime: 'desc'}).lean()
         try{
-            const customer = await Customer.findById(id)
-            res.render('customer.ejs', {customer: customer})
+            res.render('customer.ejs', {customer: customer, order: order})
         }catch(err){
             console.log(err)
         }
@@ -21,15 +25,16 @@ module.exports = {
     },
     newCustomer: async (req, res)=>{
         try{
-            await Customer.create({
+            const newCustomer = await Customer.create({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 phone: req.body.phone,
                 email: req.body.email,
                 address: req.body.address
             })
+            const id = newCustomer.id
             console.log('Customer has been added!')
-            res.redirect('/customer/:id')
+            res.redirect(`/customer/${id}`)
         }catch(err){
             console.log(err)
         }

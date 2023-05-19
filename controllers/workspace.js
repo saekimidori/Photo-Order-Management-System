@@ -121,17 +121,7 @@ module.exports = {
     },
     // customer controllers
     // ideally, this should not be here
-    getCustomer: async (req,res)=>{
-        const id = req.params.id
-        console.log(id)
-        const customer = await Customer.findById(id)
-        const order = await Order.find({customer: customer}).sort({orderTime: 'desc'}).lean()
-        try{
-            res.render('customer.ejs', {customer: customer, order: order})
-        }catch(err){
-            console.log(err)
-        }
-    },
+    
     getCustomerEdit: async (req, res) => {
         const id = req.params.id
         try{

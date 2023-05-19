@@ -9,11 +9,11 @@
     <p><b>Phone Number:</b> <%= customer.phone %></p>
     <p><b>E-mail:</b> <%= customer.email %></p>
     <p><b>Address:</b> <%= customer.address %></p>
-    <a href="/workspace/customer/<%= customer._id %>/edit" class="button">Update Customer Info</a>
+    <a href="/customer/<%= customer._id %>/edit" class="button">Update Customer Info</a>
 </p>
 
 <p>
-    <a href="/workspace/customer/<%= customer._id %>/newOrder" class="button">Place order</a>
+    <a href="/customer/<%= customer._id %>/newOrder" class="button">Place order</a>
 </p>
 
 <h2>Order History</h2>

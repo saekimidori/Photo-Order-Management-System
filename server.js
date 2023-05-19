@@ -30,6 +30,7 @@ const logger = require('morgan') // logs error messages during authentication
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const workspaceRoutes = require('./routes/workspace')
+const customerRoutes = require('./routes/customer')
 
 const methodOverride = require("method-override")
 const bodyParser= require('body-parser')
@@ -117,6 +118,7 @@ app.use(flash())
 // Routes
 app.use('/', homeRoutes)
 app.use('/workspace', workspaceRoutes)
+app.use('/customer', customerRoutes)
 
 // start server
 app.listen(process.env.PORT || PORT, ()=>{ // server tries to load on environment variable first; if not, then it will load on assigned port above (|| PORT)
