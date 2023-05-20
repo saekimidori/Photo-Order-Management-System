@@ -4,7 +4,7 @@
 <section class="notes">
 	<h2>Notes History</h2>
 	<a href="/workspace">Return to Workspace</a>
-	<form action="/workspace/:id" method="GET" id="editForm" class="hidden">
+	<form action="/note/:id" method="GET" id="editForm" class="hidden">
 		<textarea name="updatedNote" id="" cols="" rows="7" placeholder=""></textarea>
 		<button id="updateNoteBtn" type="submit">Update Note</button>
 	</form>
@@ -19,10 +19,10 @@
 				<% } else { %>
 					<li class='note' data-id='<%=note._id%>'>
 					<%= note.note %>
-					<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+					<form action="/note/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
 						<button type="submit">Mark Resolved</button>
 					</form>
-| <a href="/workspace/<%= note._id %>">Edit</a> | <a href="/workspace/delete/<%= note._id %>">Delete</a>
+| <a href="/note/<%= note._id %>">Edit</a> | <a href="/note/delete/<%= note._id %>">Delete</a>
 					<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span> 							
 				<% } %>
 			</li>

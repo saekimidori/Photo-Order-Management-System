@@ -2,7 +2,7 @@
 
 <button id="addNote">Add new note</button>
 <!-- new note form -->
-<form action="/workspace/addWorkspaceNote" method="POST" id="form" class="hidden">
+<form action="/note/addWorkspaceNote" method="POST" id="form" class="hidden">
 	<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
 	<button>Submit</button>
 </form>
@@ -13,15 +13,15 @@
 		<li class='note' data-id='<%=note._id%>'>
 		<!-- if note is unresolved, display the note -->
 			<%= note.note %>
-			<form action="/workspace/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+			<form action="/note/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
 				<button type="submit">Mark Resolved</button>
 			</form> | 
-			<a href="/workspace/<%= note._id %>">Edit</a> | 
-			<a href="/workspace/delete/<%= note._id %>">Delete</a>
+			<a href="/note/<%= note._id %>">Edit</a> | 
+			<a href="/note/delete/<%= note._id %>">Delete</a>
 			<span>Added on: <%= note.createdOn || note.date %> by Jeremy Sanders</span>						
 		</li>
 		<% } %>
 	<% }) %>
 </ul>
 
-<p class="history"><a href="/workspace/history">View all history</a></p>
+<p class="history"><a href="/note/history">View all history</a></p>
