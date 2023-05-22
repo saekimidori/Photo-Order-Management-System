@@ -9,7 +9,7 @@ module.exports = {
         const customerId = order.customerId
         const customer = await Customer.findById(customerId)
         try{
-            res.render('order-details.ejs', {order: order, customer: customer})
+            res.render('order-details.ejs', {order: order, customer: customer, user: req.user.username})
         }catch(err){
             console.log(err)
         }
@@ -75,6 +75,20 @@ module.exports = {
             console.log(newOrder)
             console.log('Order has been submitted!')
             res.redirect(`/order/${orderId}`)
+        }catch(err){
+            console.log(err)
+        }
+    },
+    markDone: async (req, res)=>{
+        const id = req.params.id
+        try{
+            await Order.findByIdAndUpdate(id,
+                {
+                    status: 'DONE',
+                    completed: Date.now(),
+                })
+                res.redirect('back')
+                console.log('Order marked DONE')
         }catch(err){
             console.log(err)
         }

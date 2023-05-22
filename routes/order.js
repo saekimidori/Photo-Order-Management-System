@@ -8,5 +8,6 @@ router.get('/:id', orderController.getOrder)
 router.get('/:id/newOrder', orderController.newOrder)
 // submits new order
 router.post('/:id/submitOrder', orderController.submitOrder)
+router.post('/markDone/:id', orderController.markDone)
 
 module.exports = router
