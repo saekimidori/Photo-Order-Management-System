@@ -9,11 +9,15 @@ const NoteSchema = new mongoose.Schema({
   },
   resolved: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   createdOn: {
     type: Date,
     default: Date.now,
+  },
+  orderId: {
+    type: String,
+    required: false,
   },
   user: {
     type: String,

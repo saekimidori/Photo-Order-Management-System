@@ -1,4 +1,5 @@
 const Customer = require('../models/Customer')
+const Note = require('../models/Note')
 const Order = require('../models/Order')
 const Product = require('../models/Product')
 
@@ -8,8 +9,13 @@ module.exports = {
         const order = await Order.findById(id)
         const customerId = order.customerId
         const customer = await Customer.findById(customerId)
+        const note = await Note.find({orderId: id})
         try{
-            res.render('order-details.ejs', {order: order, customer: customer, user: req.user.username})
+            res.render('order-details.ejs', {
+                order: order,
+                customer: customer,
+                note: note,
+                user: req.user.username})
         }catch(err){
             console.log(err)
         }

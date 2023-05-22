@@ -76,4 +76,19 @@ module.exports = {
             console.log(err)
         }
     },
+    addOrderNote: async (req, res)=>{
+        const id = req.params.id // does not grab order id
+        console.log(id)
+        try{
+            await Note.create({
+                note: req.body.orderNote,
+                orderId: id,
+                user: req.user.username
+            })
+            console.log('Note has been added!')
+            res.redirect('back')
+        }catch(err){
+            console.log(err)
+        }
+    },
 }
