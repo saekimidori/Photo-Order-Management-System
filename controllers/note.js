@@ -5,7 +5,11 @@ const Order = require('../models/Order')
 module.exports = {
     addWorkspaceNote: async (req, res)=>{
         try{
-            await Note.create({note: req.body.workspaceNote, resolved: false})
+            await Note.create({
+                note: req.body.workspaceNote,
+                resolved: false,
+                user: req.user.username
+            })
             console.log('Note has been added!')
             res.redirect('/workspace')
         }catch(err){

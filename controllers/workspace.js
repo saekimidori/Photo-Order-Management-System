@@ -18,6 +18,7 @@ module.exports = {
             res.render('workspace.ejs', {
                 order: order,
                 workspaceNotes: workspaceNotes,
+                user: req.user.username
             })
         }catch(err){
             console.log(err)
