@@ -11,7 +11,7 @@ exports.getLogin = (req, res) => {
     })
 }
 
-exports.postLogin = (req, res, next) => {
+exports.postLogin = async (req, res, next) => {
     const validationErrors = []
     // checks if username field is empty
     if (validator.isEmpty(req.body.username)) validationErrors.push({ msg: 'Please enter a valid username.' })
