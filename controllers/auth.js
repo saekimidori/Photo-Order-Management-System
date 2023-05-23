@@ -50,9 +50,6 @@ exports.postLogin = async (req, res, next) => {
   }
   
   exports.getSignup = (req, res) => {
-    if (req.user) {
-      return res.redirect('/workspace')
-    }
     res.render('signup', {
       title: 'Create Account'
     })
