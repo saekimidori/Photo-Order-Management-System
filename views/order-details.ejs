@@ -91,6 +91,15 @@
                 </tr>
             </thead>
             <tbody>
+                <% note.forEach( note => { %>
+                <tr>
+                    <td><%= note.createdOn %></td>
+                    <td><%= user %></td>
+                    <td><%= note.note %> <a href="/note/<%= note._id %>">Edit</a> | 
+                        <a href="/note/delete/<%= note._id %>">Remove</a></td>
+                </tr>
+                        
+                <% }) %>
                 <% if (order.completed) { %>
                 <tr>
                     <td><%= order.completed %></td>
@@ -123,26 +132,12 @@
 			<h5>Notes</h5>
 			<button id="addNote">Add note</button>
             <!-- new note form -->
-            <form action="/note/addOrderNote" method="POST" id="form" class="hidden">
+            <form action="/note/addOrderNote/<%= order._id %>" method="POST" id="form" class="hidden">
                 <textarea name="orderNote" id="" cols="" rows="7"></textarea>
                 <button>Submit</button>
             </form>
 			<p>09/20/22 09:32 AM: Called customer to pick up order; left voicemail. Discard order after 09/27/22.</p>
 			<p>06/02/22 02:11 PM: Called customer regarding delay due to paper out of stock.</p>
-
-            <ul class="notes">
-                <% note.forEach( note => { %>
-                    							
-                    <li class='note' data-id='<%=note._id%>'>
-                    <!-- if note is unresolved, display the note -->
-                        <%= note.note %>
-                        <a href="/note/<%= note._id %>">Edit</a> | 
-                        <a href="/note/delete/<%= note._id %>">Delete</a>
-                        <span>Added on: <%= note.createdOn || note.date %> by <%= user %></span>						
-                    </li>
-                    
-                <% }) %>
-            </ul>
 		</aside>
 
 

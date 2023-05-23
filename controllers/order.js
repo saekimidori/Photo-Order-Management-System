@@ -9,7 +9,7 @@ module.exports = {
         const order = await Order.findById(id)
         const customerId = order.customerId
         const customer = await Customer.findById(customerId)
-        const note = await Note.find({orderId: id})
+        const note = await Note.find({orderId: id}).sort({createdOn: 'desc'}).lean()
         try{
             res.render('order-details.ejs', {
                 order: order,

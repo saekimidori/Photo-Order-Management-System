@@ -11,6 +11,6 @@ router.post('/update/:id', noteController.updateNote)
 router.get('/delete/:id', noteController.deleteNote)
 
 
-router.post('/addOrderNote', noteController.addOrderNote)
+router.post('/addOrderNote/:id', noteController.addOrderNote)
 
 module.exports = router
