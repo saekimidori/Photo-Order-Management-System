@@ -18,7 +18,7 @@
 			</form> | 
 			<a href="/note/<%= note._id %>">Edit</a> | 
 			<a href="/note/delete/<%= note._id %>">Delete</a>
-			<span>Added on: <%= note.createdOn || note.date %> by <%= user %></span>						
+			<span>Added on: <%= note.createdOn || note.date %> by <%= note.user %></span>						
 		</li>
 		<% } %>
 	<% }) %>
