@@ -93,7 +93,7 @@
             <tbody>
                 <% note.forEach( note => { %>
                 <tr>
-                    <td><%= note.createdOn %></td>
+                    <td><%= note.created %></td>
                     <td><%= user %></td>
                     <td><%= note.note %> <a href="/note/<%= note._id %>">Edit</a> | 
                         <a href="/note/delete/<%= note._id %>">Remove</a></td>

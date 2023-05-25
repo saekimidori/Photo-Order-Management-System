@@ -1,5 +1,5 @@
 const Customer = require('../models/Customer')
-const Note = require('../models/Note')
+const OrderNote = require('../models/OrderNote')
 const Order = require('../models/Order')
 const Product = require('../models/Product')
 
@@ -9,7 +9,7 @@ module.exports = {
         const order = await Order.findById(id)
         const customerId = order.customerId
         const customer = await Customer.findById(customerId)
-        const note = await Note.find({orderId: id}).sort({createdOn: 'desc'}).lean()
+        const note = await OrderNote.find({orderId: id}).sort({createdOn: 'desc'}).lean()
         try{
             res.render('order-details.ejs', {
                 order: order,

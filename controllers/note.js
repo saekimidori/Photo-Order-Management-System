@@ -1,4 +1,5 @@
 const Note = require('../models/Note')
+const OrderNote = require('../models/OrderNote')
 const Customer = require('../models/Customer')
 const Order = require('../models/Order')
 
@@ -80,9 +81,9 @@ module.exports = {
         const id = req.params.id // does not grab order id
         console.log(id)
         try{
-            await Note.create({
-                note: req.body.orderNote,
+            await OrderNote.create({
                 orderId: id,
+                note: req.body.orderNote,
                 user: req.user.username
             })
             console.log('Note has been added!')
