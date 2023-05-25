@@ -95,8 +95,12 @@
                 <tr>
                     <td><%= note.created %></td>
                     <td><%= note.user %></td>
-                    <td><%= note.note %> <a href="/note/<%= note._id %>">Edit</a> | 
-                        <a href="/note/delete/<%= note._id %>">Remove</a></td>
+                    <td><%= note.note %> 
+                        <!-- if the creator of note is the logged in user, display Edit and Remove -->
+                        <% if (note.user == user) { %>
+                            <a href="/note/<%= note._id %>">Edit</a> | 
+                            <a href="/note/delete/<%= note._id %>">Remove</a></td>
+                        <% } %>
                 </tr>
                         
                 <% }) %>

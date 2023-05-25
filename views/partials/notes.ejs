@@ -9,15 +9,19 @@
 
 <ul class="workspaceNotes">
 	<% workspaceNotes.forEach( note => { %>
+		<!-- if note is unresolved, display the note -->
 		<% if (note.resolved === false) { %>							
 		<li class='note' data-id='<%=note._id%>'>
-		<!-- if note is unresolved, display the note -->
 			<%= note.note %>
 			<form action="/note/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
 				<button type="submit">Mark Resolved</button>
-			</form> | 
-			<a href="/note/<%= note._id %>">Edit</a> | 
-			<a href="/note/delete/<%= note._id %>">Delete</a>
+			</form>
+			<!-- if the creator of note is the logged in user, display Edit and Delete -->
+			<% if (note.user == user) { %>
+				 | 
+				<a href="/note/<%= note._id %>">Edit</a> | 
+				<a href="/note/delete/<%= note._id %>">Delete</a>
+			<% } %>
 			<span>Added on: <%= note.createdOn || note.date %> by <%= note.user %></span>						
 		</li>
 		<% } %>
