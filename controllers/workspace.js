@@ -2,6 +2,7 @@ const Note = require('../models/Note')
 const Customer = require('../models/Customer')
 const Order = require('../models/Order')
 const Product = require('../models/Product')
+const User = require('../models/User')
 
 // function to convert date to m/d/yyyy, h:mm:ss AM in America/New York time zone
 const formatDate = date => {
@@ -13,12 +14,15 @@ module.exports = {
         try{
             const order = await Order.find({status: 'PROC'}).sort({ orderTime: 'desc' }).lean() // finds orders in Order database that are in PROCESSING status
             // console.log(order) // array of objects
+
+            const user = await User.findById({_id: req.user.id})
+            console.log(user)
             
             const workspaceNotes = await Note.find().sort({ createdOn: 'desc' }).lean()
             res.render('workspace.ejs', {
                 order: order,
                 workspaceNotes: workspaceNotes,
-                user: req.user.username
+                user: user
             })
         }catch(err){
             console.log(err)
