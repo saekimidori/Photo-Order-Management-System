@@ -77,7 +77,7 @@ exports.postLogin = async (req, res, next) => {
     })
   
     // finds if username already exists in database
-    User.findOne({userName: req.body.userName}, (err, existingUser) => {
+    User.findOne({username: req.body.username}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
         // displays error if username exists
