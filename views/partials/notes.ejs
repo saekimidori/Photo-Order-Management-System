@@ -1,31 +1,33 @@
-<h3>Notes</h3>
+<section class="notes">
+	<h3>Notes</h3>
 
-<button id="addNote">Add new note</button>
-<!-- new note form -->
-<form action="/note/addWorkspaceNote" method="POST" id="form" class="hidden">
-	<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
-	<button>Submit</button>
-</form>
+	<button id="addNote">Add new note</button>
+	<!-- new note form -->
+	<form action="/note/addWorkspaceNote" method="POST" id="form" class="hidden">
+		<textarea name="workspaceNote" id="" cols="" rows="7"></textarea>
+		<button>Submit</button>
+	</form>
 
-<ul class="workspaceNotes">
-	<% workspaceNotes.forEach( note => { %>
-		<!-- if note is unresolved, display the note -->
-		<% if (note.resolved === false) { %>							
-		<li class='note' data-id='<%=note._id%>'>
-			<%= note.note %>
-			<form action="/note/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
-				<button type="submit">Mark Resolved</button>
-			</form>
-			<!-- if the creator of note is the logged in user, display Edit and Delete -->
-			<% if (note.user == user) { %>
-				 | 
-				<a href="/note/<%= note._id %>">Edit</a> | 
-				<a href="/note/delete/<%= note._id %>">Delete</a>
+	<ul class="workspaceNotes">
+		<% workspaceNotes.forEach( note => { %>
+			<!-- if note is unresolved, display the note -->
+			<% if (note.resolved === false) { %>							
+			<li class='note' data-id='<%=note._id%>'>
+				<%= note.note %>
+				<form action="/note/markResolved/<%= note._id %>" method="POST" class="resolvedBtn">
+					<button type="submit">Mark Resolved</button>
+				</form>
+				<!-- if the creator of note is the logged in user, display Edit and Delete -->
+				<% if (note.user == user) { %>
+					| 
+					<a href="/note/<%= note._id %>">Edit</a> | 
+					<a href="/note/delete/<%= note._id %>">Delete</a>
+				<% } %>
+				<span>Added on: <%= note.createdOn || note.date %> by <%= note.user %></span>						
+			</li>
 			<% } %>
-			<span>Added on: <%= note.createdOn || note.date %> by <%= note.user %></span>						
-		</li>
-		<% } %>
-	<% }) %>
-</ul>
+		<% }) %>
+	</ul>
 
-<p class="history"><a href="/note/history">View all history</a></p>
+	<p class="history"><a href="/note/history">View all history</a></p>
+</section>

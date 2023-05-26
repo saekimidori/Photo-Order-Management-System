@@ -46,8 +46,9 @@ h4 {
      font-size: .9rem;
 }
 
-.date {
-     text-align: right; /*not aligning -- need to wrap in div*/
+span.date {
+     display: block;
+     text-align: right; 
 }
 
 
@@ -58,13 +59,21 @@ header {
      
 }
 
+div.header {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     align-items: baseline;
+     justify-content: space-between;
+}
+
 /* 2 columns */
 .col-2 {
      display: flex;
      flex-direction: row;
      flex-wrap: nowrap;
      align-items: baseline;
-     justify-content: space-between;
+     justify-content: space-evenly;
 }
 
 /* centers content on x, y axis */

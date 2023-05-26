@@ -13,12 +13,12 @@
 	</head>
 	<body>
 		<header>
-			<div class="col-2">
+			<div class="header">
 				<h1>Photo Order Management System</h1>
-				<p><a href="#"><%= user.username %></a><a href="/logout">Logout</a></p>
+				<span><a href="#"><%= user.username %></a><a href="/logout">Logout</a></span>
 			</div>
 			<!-- date should look like this: Wednesday, June 1, 2022 9:46 AM -->
-			<span class="date"> <%= new Date().toUTCString() %></span>
+			<span class="date"><%= new Date().toUTCString() %></span>
 		</header>
     </body>
 </html>
