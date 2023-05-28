@@ -75,11 +75,37 @@
 
 		<!-- tabbed links -->
 		<p><a href="">Product Details</a></p>
-        <p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order Details</th>
+                    <th>Quantity</th>
+                    <th>Per unit Price</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4x6 Internet Print</td>
+                    <td>7</td>
+                    <td>$0.38</td>
+                    <td>$2.66</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td>$2.66</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <h3>Complete Envelope</h3>
         <form action="/order/markDone/<%= order._id %>" method="POST">
+            <label for="productType">No of 4x6 Internet Print</label>
+                <input type="text" placeholder="7">
             <button type="submit">Complete Envelope</button>
         </form>
-    </p>
 		<p><a href="">Create Exception</a></p>
 		<p><a href="">Envelope History</a></p>
         <table>
