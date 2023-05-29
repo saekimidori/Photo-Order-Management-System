@@ -170,10 +170,6 @@ th, td {
      padding: 10px;
 }
 
-/* span {
-     display: block;
-} */
-
 blockquote {
      color: #494949;
      background-color: goldenrod;
@@ -238,3 +234,11 @@ p.history {
      text-align: right;
 }
 
+.order-functions {
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+}
+.order-functions a {
+     margin-left: 1.5rem;
+}
