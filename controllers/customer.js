@@ -1,6 +1,7 @@
 const Customer = require('../models/Customer')
 const Order = require('../models/Order')
 const Product = require('../models/Product')
+const User = require('../models/User')
 
 module.exports = {
     getCustomer: async (req,res)=>{
@@ -8,17 +9,22 @@ module.exports = {
         console.log(id)
         const customer = await Customer.findById(id)
         const order = await Order.find({customer: customer}).sort({orderTime: 'desc'}).lean()
+        const user = await User.findById({_id: req.user.id})
         try{
-            res.render('customer.ejs', {customer: customer, order: order})
+            res.render('customer.ejs', {
+                customer: customer, 
+                order: order,
+                user: user})
         }catch(err){
             console.log(err)
         }
     },
     getCustomerEdit: async (req, res) => {
         const id = req.params.id
+        const user = await User.findById({_id: req.user.id})
         try{
             const customer = await Customer.findById(id)
-            res.render('editCustomer.ejs', {customer: customer})
+            res.render('editCustomer.ejs', {customer: customer, user: user})
         }catch(err){
             console.log(err)
         }
