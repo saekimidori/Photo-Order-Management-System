@@ -73,8 +73,15 @@
 			</tbody>
 		</table>
 
-		<!-- tabbed links -->
-		<p><a href="" class="button">Product Details</a></p>
+		<section class="order-tabs">
+            <a href="" class="button">Product Details</a>
+            <a href="" class="button">Complete Envelope</a>
+            <a href="" class="button">Create Exception</a>
+		    <a href="" class="button">Envelope History</a>
+            <a href="" class="button">Add Note</a>
+        </section>
+
+        <!-- product details -->
         <table>
             <thead>
                 <tr>
@@ -106,8 +113,7 @@
                 <input type="text" value="7">
             <button type="submit">Complete Envelope</button>
         </form>
-		<p><a href="" class="button">Create Exception</a></p>
-		<p><a href="" class="button">Envelope History</a></p>
+		
         <table>
             <thead>
                 <tr>
@@ -145,14 +151,19 @@
             </tbody>
         </table>
 
-		<section class="order-functions">
-			<a href="" class="button">Drop from Workqueue</a>
-			<a href="" class="button">Forms</a>
-			<a href="" class="button">Update Envelope Details</a>
-			<a href="" class="button">Reprint Label</a>
-			<a href="" class="button">Reprint Claim Check</a>
-			<a href="" class="button">Resend Internet Order</a>
-		</section>
+        <section>
+            <div class="order-view">
+                <%- include('partials/header') -%>
+            </div>
+            <section class="order-functions">
+                <a href="" class="button">Drop from Workqueue</a>
+                <a href="" class="button">Forms</a>
+                <a href="" class="button">Update Envelope Details</a>
+                <a href="" class="button">Reprint Label</a>
+                <a href="" class="button">Reprint Claim Check</a>
+                <a href="" class="button">Resend Internet Order</a>
+            </section>
+        </section>
 
 		<aside>
 			<h5>Notes</h5>

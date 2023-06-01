@@ -234,11 +234,19 @@ p.history {
      text-align: right;
 }
 
+.order-tabs {
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     margin: 1rem 1.5rem;
+}
 .order-functions {
      display: flex;
      flex-direction: row;
      justify-content: flex-end;
+     margin: 1rem 1.5rem;
 }
+.order-tabs a,
 .order-functions a {
-     margin-left: 1.5rem;
+     margin: auto 1rem;
 }
