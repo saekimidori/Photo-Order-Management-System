@@ -5,10 +5,22 @@ const addNote = document.querySelector('#addNote')
 // const resolvedBtn = document.querySelectorAll('.resolved')
 // const editBtn = document.querySelectorAll('.edit')
 // const deleteBtn = document.querySelectorAll('.delete')
+const productDetailsBtn = document.querySelector('#product-details-btn')
+const completeEnvelopeBtn = document.querySelector('#complete-envelope-btn')
+const createExceptionBtn = document.querySelector('#create-exception-btn')
+const envelopeHistoryBtn = document.querySelector('#envelope-history-btn')
+const addNoteBtn = document.querySelector('#add-note-btn')
 
 ///// Forms
 const form = document.querySelector('#form')
 // const editForm = document.querySelector('#editForm')
+
+// order views
+const productDetails = document.querySelector('#product-details')
+const completeEnvelope = document.querySelector('#complete-envelope')
+const createException = document.querySelector('#create-exception')
+const envelopeHistory = document.querySelector('#envelope-history')
+const newOrderNote = document.querySelector('#new-order-note')
 
 ///// Click events
 // searchBtn.addEventListener('click', search)
@@ -23,6 +35,11 @@ addNote.addEventListener('click', newNote)
 // Array.from(deleteBtn).forEach((element)=>{
 //     element.addEventListener('click', deleteNote)
 // })
+productDetailsBtn.addEventListener('click', toggleProductDetails)
+completeEnvelopeBtn.addEventListener('click', toggleCompleteEnvelope)
+createExceptionBtn.addEventListener('click', toggleCreateException)
+envelopeHistoryBtn.addEventListener('click', toggleEnvelopeHistory)
+addNoteBtn.addEventListener('click', toggleOrderNoteForm)
 
 // function to display form for adding a new note
 function newNote() {
@@ -33,6 +50,46 @@ function newNote() {
     } else {
         addNote.innerHTML = 'Add new note'
     }
+}
+
+function toggleProductDetails() {
+    productDetails.classList.toggle('hidden')
+    completeEnvelope.classList.add('hidden')
+    createException.classList.add('hidden')
+    envelopeHistory.classList.add('hidden')
+    newOrderNote.classList.add('hidden')
+}
+
+function toggleCompleteEnvelope() {
+    completeEnvelope.classList.toggle('hidden')
+    productDetails.classList.add('hidden')
+    createException.classList.add('hidden')
+    envelopeHistory.classList.add('hidden')
+    newOrderNote.classList.add('hidden')
+}
+
+function toggleCreateException() {
+    createException.classList.toggle('hidden')
+    productDetails.classList.add('hidden')
+    completeEnvelope.classList.add('hidden')
+    envelopeHistory.classList.add('hidden')
+    newOrderNote.classList.add('hidden')
+}
+
+function toggleEnvelopeHistory() {
+    envelopeHistory.classList.toggle('hidden')
+    productDetails.classList.add('hidden')
+    completeEnvelope.classList.add('hidden')
+    createException.classList.add('hidden')
+    newOrderNote.classList.add('hidden')
+}
+
+function toggleOrderNoteForm() {
+    newOrderNote.classList.toggle('hidden')
+    envelopeHistory.classList.add('hidden')
+    productDetails.classList.add('hidden')
+    completeEnvelope.classList.add('hidden')
+    createException.classList.add('hidden')
 }
 
 // function displayEditForm() {
