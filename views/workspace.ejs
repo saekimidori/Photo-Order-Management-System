@@ -1,13 +1,14 @@
 <%- include('partials/header') -%>
 
 
-<h4>Order Search</h4>
-<form action="/workspace/search">
-	<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
-	<input type="search" name="filter">
-	<button id="searchBtn">Search</button>
-</form>
-<p><a href="">Advanced Search</a> (Search by product)</p>
+<section>
+	<form action="/workspace/search">
+		<label for="search-query">Enter phone number, last name, envelope number, or order number:</label>
+		<input type="search" name="filter">
+		<button id="searchBtn">Search</button>
+	</form>
+	<p><a href="">Advanced Search</a> (Search by product)</p>
+</section>
 
 <div class="col-2">
 	<%- include('partials/workspace') -%>
