@@ -24,6 +24,7 @@
 :root {
      --main-text-color: black;
      --main-accent-color: #21367a;
+     --main-bg-color: #c2c2c2;
      --main-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      --main-font-size: .8em;;
 }
@@ -65,6 +66,11 @@ div.header {
      flex-wrap: nowrap;
      align-items: baseline;
      justify-content: space-between;
+}
+
+section.search {
+     background-color: var(--main-bg-color);
+     justify-content: space-around;
 }
 
 /* 2 columns */
@@ -176,7 +182,7 @@ blockquote {
 }
 
 .workspaceNotes {
-     background-color: #c2c2c2;
+     background-color: var(--main-bg-color);
      list-style: none;
      padding-left: 0;
      padding: 1.5em;
