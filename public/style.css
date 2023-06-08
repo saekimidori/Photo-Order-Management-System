@@ -68,9 +68,15 @@ div.header {
      justify-content: space-between;
 }
 
-section.search {
+div.search {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     align-items: center;
+     justify-content: space-between;
+     width: 33%;
+     padding: .5rem;
      background-color: var(--main-bg-color);
-     justify-content: space-around;
 }
 
 /* 2 columns */
