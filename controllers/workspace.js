@@ -30,6 +30,7 @@ module.exports = {
     },
     search: async (req,res)=>{
         try{
+            const user = await User.findById({_id: req.user.id})
             const filter = req.query.filter // should handle lowercases
             // console.log(filter)
             let result = await Customer.find(
@@ -50,7 +51,10 @@ module.exports = {
             if (result.length === 0) {
                 result = null
             }
-            res.render('search-results.ejs', {filter: filter, result: result})
+            res.render('search-results.ejs', {
+                filter: filter,
+                result: result,
+                user: user})
         }catch(err){
             console.log(err)
         }
