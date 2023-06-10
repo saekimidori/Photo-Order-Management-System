@@ -74,6 +74,7 @@ div.search {
      flex-wrap: nowrap;
      align-items: center;
      justify-content: space-between;
+     margin: auto;
      width: 33%;
      padding: .5rem;
      background-color: var(--main-bg-color);
