@@ -13,7 +13,6 @@ module.exports = {
     getWorkspace: async (req,res)=>{
         try{
             const order = await Order.find({status: 'PROC'}).sort({ orderTime: 'desc' }).lean() // finds orders in Order database that are in PROCESSING status
-            // console.log(order) // array of objects
 
             const user = await User.findById({_id: req.user.id})
             console.log(user)
