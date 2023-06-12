@@ -26,6 +26,9 @@
 </form>
 
 <h2>Order History</h2>
+<% if (!order.length) { %>
+    <p>No orders found.</p>
+<% } else { %>
 <table>
     <thead>
         <tr>
@@ -42,20 +45,25 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>477902</td>
-            <td>2042520132699</td>
-            <td>16x20 Internet Poster</td>
-            <td>Sold</td>
-            <td>07/22/22 8:30 AM</td>
-            <td></td>
-            <td>07/21/22 8:30 AM</td>
-            <td>07/21/22 9:26 PM</td>
-            <td>07/22/22 10:09 AM</td>
-        </tr>
+        <% let num = 1 %>
+        <% order.forEach(order => { %>
+            <tr>
+                <td><%= num %></td>
+                <td><a href="/order/<%= order._id %>"><%= order.envelopeNum %></a></td>
+                <td><%= order.orderId %></td>
+                <td><%= order.details %></td>
+                <td><%= order.status %></td>
+                <td><%= order.promiseTime %></td>
+                <td></td>
+                <td><%= order.orderTime %></td>
+                <td><%= order.completed %></td>
+                <td><%= order.sold %></td>
+            </tr>
+            <% num++ %>
+        <% }) %>
     </tbody>
 </table>
+<% } %>
 
 
 <%- include('partials/footer') -%>

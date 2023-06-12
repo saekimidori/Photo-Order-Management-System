@@ -22,9 +22,13 @@ module.exports = {
     getCustomerEdit: async (req, res) => {
         const id = req.params.id
         const user = await User.findById({_id: req.user.id})
+        const customer = await Customer.findById(id)
+        const order = await Order.find({customer: customer}).sort({orderTime: 'desc'}).lean()
         try{
-            const customer = await Customer.findById(id)
-            res.render('editCustomer.ejs', {customer: customer, user: user})
+            res.render('editCustomer.ejs', {
+                customer: customer,
+                user: user,
+                order: order})
         }catch(err){
             console.log(err)
         }
