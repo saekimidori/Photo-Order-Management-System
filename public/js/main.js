@@ -11,6 +11,13 @@ const createExceptionBtn = document.querySelector('#create-exception-btn')
 const envelopeHistoryBtn = document.querySelector('#envelope-history-btn')
 const addNoteBtn = document.querySelector('#add-note-btn')
 
+const selectElement = document.querySelector(".order-tabs");
+const orderView = document.querySelector(".order-view");
+
+selectElement.addEventListener("change", (event) => {
+  orderView.textContent = `<%- include('partials/${event.target.value}') -%>`
+});
+
 ///// Forms
 const form = document.querySelector('#form')
 // const editForm = document.querySelector('#editForm')
