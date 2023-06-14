@@ -122,13 +122,30 @@
         <h3>Complete Envelope</h3>
         <form action="/order/markDone/<%= order._id %>" method="POST">
             <label for="productType">No of 4x6 Internet Print</label>
-                <input type="text" value="7">
+                <input type="number" value="7">
             <button type="submit">Complete Envelope</button>
         </form>
         </div>
 
         <div id="create-exception">
-
+            <form action="/order/markDone/<%= order._id %>" method="POST">
+                <label for="exception">Exception Type</label>
+                <select name="refused" id="refused">Refused</select>
+                <select name="cancel" id="cancel">Cancel</select>
+                <select name="unsellable" id="unsellable">Unsellable</select>
+                <br>
+                <label for="reason">Reason for Exception</label>
+                <input type="text" value="CUSTOMER DID NOT LIKE QUALITY">
+                <br>
+                <label for="comments">Comments</label>
+                <textarea name="comments" id="" cols="30" rows="10"></textarea>
+                <br>
+                <label for="prints">No of 4x6 Internet Print</label>
+                    <input type="number"> of 7
+                <br>
+                <button type="submit">Save Exception</button>
+            </form>
+            </div>
         </div>
 		
         <div id="envelope-history">
