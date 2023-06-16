@@ -38,9 +38,6 @@ body {
 
 header h1 {
      color: var(--main-accent-color);
-     /* display: flex; */
-     /* box-sizing: content-box; */
-     /* width: 80%; */
 }
 
 h4 {
