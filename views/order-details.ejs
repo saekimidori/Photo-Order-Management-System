@@ -130,9 +130,11 @@
         <div id="create-exception">
             <form action="/order/markDone/<%= order._id %>" method="POST">
                 <label for="exception">Exception Type</label>
-                <select name="refused" id="refused">Refused</select>
-                <select name="cancel" id="cancel">Cancel</select>
-                <select name="unsellable" id="unsellable">Unsellable</select>
+                <select name="exception" id="">
+                <option name="refused" id="refused">Refused</option>
+                <option name="cancel" id="cancel">Cancel</option>
+                <option name="unsellable" id="unsellable">Unsellable</option>
+                </select>
                 <br>
                 <label for="reason">Reason for Exception</label>
                 <input type="text" value="CUSTOMER DID NOT LIKE QUALITY">
