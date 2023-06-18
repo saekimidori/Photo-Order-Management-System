@@ -19,7 +19,7 @@
 			<tr data-id='<%= order._id %>'>
 				<td><a href="/customer/<%= order.customer._id %>"><%= order.customer.lastName %>, <%= order.customer.firstName %></a></td>
 				<td><a href="/order/<%= order._id %>"><%= order.envelopeNum %></a></td>
-				<td></td>
+				<td><%= order.promiseTime.toLocaleString() %></td>
 				<td></td>
 				<td><%= order.details %></td>
 				<td><a href="#">Print Label</a></td>
