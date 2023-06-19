@@ -129,23 +129,51 @@
 
         <div id="create-exception">
             <form action="/order/markDone/<%= order._id %>" method="POST">
-                <label for="exception">Exception Type</label>
-                <select name="exception" id="">
-                <option name="refused" id="refused">Refused</option>
-                <option name="cancel" id="cancel">Cancel</option>
-                <option name="unsellable" id="unsellable">Unsellable</option>
-                </select>
-                <br>
-                <label for="reason">Reason for Exception</label>
-                <input type="text" value="CUSTOMER DID NOT LIKE QUALITY">
-                <br>
-                <label for="comments">Comments</label>
-                <textarea name="comments" id="" cols="30" rows="10"></textarea>
-                <br>
-                <label for="prints">No of 4x6 Internet Print</label>
-                    <input type="number"> of 7
-                <br>
-                <button type="submit">Save Exception</button>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="exception">Exception Type</label>
+                            </td>
+                            <td>
+                                <select name="exception" id="">
+                                    <option name="refused" id="refused">Refused</option>
+                                    <option name="cancel" id="cancel">Cancel</option>
+                                    <option name="unsellable" id="unsellable">Unsellable</option>
+                                    </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reason">Reason for Exception</label>
+                            </td>
+                            <td>
+                                <input type="text" value="CUSTOMER DID NOT LIKE QUALITY">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="comments">Comments</label>                
+                            </td>
+                            <td>
+                                <textarea name="comments" id="" cols="30" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="prints">No of 4x6 Internet Print</label>
+                            </td>
+                            <td>
+                                <input type="number"> of 7
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit">Save Exception</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </form>
             </div>
         </div>

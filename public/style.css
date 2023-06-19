@@ -180,6 +180,10 @@ th, td {
      padding: 10px;
 }
 
+#create-exception td {
+     border: none;
+}
+
 blockquote {
      color: #494949;
      background-color: goldenrod;
@@ -236,6 +240,9 @@ textarea {
      width: 100%;
      margin-top: .3rem;
 }
+
+
+
 .hidden {
      display: none;
 }
