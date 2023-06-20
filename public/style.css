@@ -241,7 +241,9 @@ textarea {
      margin-top: .3rem;
 }
 
-
+#create-exception #reason {
+     width: 25%;
+}
 
 .hidden {
      display: none;
