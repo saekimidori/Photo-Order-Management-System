@@ -269,3 +269,7 @@ p.history {
 .order-functions a {
      margin: auto 1rem;
 }
+
+select {
+     padding: .15rem;
+}
