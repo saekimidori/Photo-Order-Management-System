@@ -241,6 +241,10 @@ textarea {
      margin-top: .3rem;
 }
 
+#create-exception td {
+     vertical-align: top;
+}
+
 #create-exception #reason {
      width: 25%;
 }
