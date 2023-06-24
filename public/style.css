@@ -110,7 +110,7 @@ footer {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-/*** user/logout navigation ***/
+/********** USER/LOGOUT NAVIGATION **********/
 header a {
      text-transform: uppercase;
      padding: 10px;
@@ -124,7 +124,7 @@ header a:last-child {
      background-color: #6d0303;
 }
 
-/*** normal links ***/
+/********** NORMAL LINKS **********/
 a, a:visited {
      color: #0169ad;
      text-decoration: none;
@@ -134,7 +134,7 @@ a:hover {
      text-decoration: none;
 }
 
-/*** buttons ***/
+/********** BUTTONS **********/
 button,
 .button,
 .notes a {
@@ -158,7 +158,7 @@ form.resolvedBtn {
      display: inline-block;
 }
 
-/*** tables ***/
+/********** TABLES **********/
 table {
      width: 100%;
 }
@@ -235,7 +235,7 @@ span.delete {
      cursor: pointer;
 }
 
-/*** forms ***/
+/********** FORMS **********/
 textarea {
      width: 100%;
      margin-top: .3rem;
