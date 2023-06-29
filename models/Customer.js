@@ -13,6 +13,8 @@ const CustomerSchema = new mongoose.Schema({
   },
   phone: {
     type: Number,
+    // minlength not enforced
+    minlength: 10, 
     required: true,
   },
   email: {
